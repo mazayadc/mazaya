@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('/fonts/Nexa-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --foreground-rgb: 2, 1, 2;
+  --background-rgb: 254, 254, 254;
+  
+  /* Brand Colors */
+  --primary: 48, 114, 72; /* #307248 */
+  --primary-foreground: 254, 254, 254; /* #FEFEFE */
+  --secondary: 36, 82, 55; /* #245237 */
+  --secondary-foreground: 254, 254, 254; /* #FEFEFE */
+  
+  /* Neutral Colors */
+  --background: 254, 254, 254; /* #FEFEFE */
+  --foreground: 2, 1, 2; /* #020102 */
+  --card: 254, 254, 254; /* #FEFEFE */
+  --card-foreground: 2, 1, 2; /* #020102 */
+  --popover: 254, 254, 254; /* #FEFEFE */
+  --popover-foreground: 2, 1, 2; /* #020102 */
+  --muted: 210, 211, 213; /* #D2D3D5 */
+  --muted-foreground: 158, 158, 158; /* #9E9E9E */
+  --accent: 210, 211, 213; /* #D2D3D5 */
+  --accent-foreground: 2, 1, 2; /* #020102 */
+  --destructive: 220, 38, 38; /* #DC2626 */
+  --destructive-foreground: 254, 254, 254; /* #FEFEFE */
+  --border: 210, 211, 213; /* #D2D3D5 */
+  --input: 210, 211, 213; /* #D2D3D5 */
+  --ring: 48, 114, 72; /* #307248 */
+  
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nexa Bold', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background h-10 py-2 px-4;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background h-10 py-2 px-4;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground;
+  }
+  
+  .section-subtitle {
+    @apply text-xl md:text-2xl font-medium mb-12 text-muted-foreground max-w-3xl mx-auto;
+  }
+  
+  .card {
+    @apply bg-card rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px];
+  }
+}

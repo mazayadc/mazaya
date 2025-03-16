@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  images: {
+    domains: ['images.ctfassets.net'], // Add your Contentful domain
+    unoptimized: true,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
 };
 
 module.exports = nextConfig;

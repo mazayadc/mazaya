@@ -59,6 +59,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }   
 
+// Add revalidate
+export const revalidate = 0;
+
 async function getBlogPost(slug: string): Promise<BlogPost | null> {    
   try {
     const response = await client.getEntries({
@@ -115,9 +118,6 @@ function extractTextContent(content: any[]): string {
   
   return fullText.trim();
 }
-
-// Add revalidation time
-export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function BlogDetailPage({
   params,

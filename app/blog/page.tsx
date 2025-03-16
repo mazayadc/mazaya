@@ -1,16 +1,16 @@
 import { client } from '@/lib/contentful';
 import BlogContent from './components/BlogContent';
-import Link from "next/link";
+
+// Use revalidate instead of force-dynamic
+export const revalidate = 0;
 
 async function getBlogPosts() {
   const response = await client.getEntries({
     content_type: 'blogPage',
+    order: ['-sys.createdAt'] as const, // Fix: Wrap in array and use const assertion
   });
   return response.items;
 }
-
-// Add revalidation time
-export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
@@ -20,6 +20,14 @@ export default async function BlogPage() {
     title: post.fields.title,
     slug: post.fields.slug
   })));
-  
-  return <BlogContent posts={posts} />;
+
+  // Add caching headers using Next.js headers API
+  return (
+    <>
+      <head>
+        <meta httpEquiv="Cache-Control" content="public, s-maxage=10, stale-while-revalidate=59" />
+      </head>
+      <BlogContent posts={posts} />
+    </>
+  );
 }

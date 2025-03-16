@@ -7,7 +7,7 @@ export const revalidate = 0;
 async function getBlogPosts() {
   const response = await client.getEntries({
     content_type: 'blogPage',
-    order: ['-sys.createdAt'] as const, // Fix: Wrap in array and use const assertion
+    order: '-sys.createdAt',
   });
   return response.items;
 }

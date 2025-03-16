@@ -116,6 +116,9 @@ function extractTextContent(content: any[]): string {
   return fullText.trim();
 }
 
+// Add revalidation time
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function BlogDetailPage({
   params,
 }: {

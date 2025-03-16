@@ -9,6 +9,9 @@ async function getBlogPosts() {
   return response.items;
 }
 
+// Add revalidation time
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function BlogPage() {
   const posts = await getBlogPosts();
   

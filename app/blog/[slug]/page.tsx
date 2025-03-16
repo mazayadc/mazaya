@@ -26,20 +26,7 @@ interface BlogPost {
   };
 }
 
-export async function generateStaticParams() {
-  try {
-    const response = await client.getEntries({
-      content_type: 'blogPage',
-    });
-
-    return response.items.map((post: any) => ({
-      slug: post.fields.slug,
-    }));
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getBlogPost(params.slug);
@@ -58,9 +45,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
   };
 }   
-
-// Add revalidate
-export const revalidate = 0;
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {    
   try {

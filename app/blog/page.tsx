@@ -1,13 +1,13 @@
 import { client } from '@/lib/contentful';
 import BlogContent from './components/BlogContent';
 
-// Use revalidate instead of force-dynamic
-export const revalidate = 0;
+// Make the page dynamic
+export const dynamic = 'force-dynamic';
 
 async function getBlogPosts() {
   const response = await client.getEntries({
     content_type: 'blogPage',
-    order: '-sys.createdAt',
+    order: ['-sys.createdAt'],
   });
   return response.items;
 }
@@ -21,13 +21,5 @@ export default async function BlogPage() {
     slug: post.fields.slug
   })));
 
-  // Add caching headers using Next.js headers API
-  return (
-    <>
-      <head>
-        <meta httpEquiv="Cache-Control" content="public, s-maxage=10, stale-while-revalidate=59" />
-      </head>
-      <BlogContent posts={posts} />
-    </>
-  );
+  return <BlogContent posts={posts} />;
 }

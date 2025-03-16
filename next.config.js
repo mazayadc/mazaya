@@ -2,10 +2,6 @@
 const nextConfig = {
   images: {
     domains: ['images.ctfassets.net'], // Add your Contentful domain
-    unoptimized: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 

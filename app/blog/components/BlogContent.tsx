@@ -51,7 +51,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1920&auto=format&fit=crop"
+            src="/DSC02150.JPG"
             alt="Dental blog"
             fill
             priority

@@ -51,7 +51,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02150.JPG"
+            src="/DSC02150.webp"
             alt="Dental blog"
             fill
             priority
@@ -75,6 +75,15 @@ export default function BlogContent({ posts }: BlogContentProps) {
       {/* Blog Posts Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container">
+          {posts.length === 0 ? (
+            <div className="text-center py-16">
+              <h2 className="text-2xl font-bold mb-4 font-heading">Blog Coming Soon</h2>
+              <p className="text-muted-foreground max-w-lg mx-auto">
+                We&apos;re preparing expert dental health articles and tips from our specialists. Check back soon for the latest insights from Mazaya Dental Center.
+              </p>
+            </div>
+          ) : (
+          <>
           {/* Blog Posts Grid */}
           <motion.div 
             layout 
@@ -162,6 +171,8 @@ export default function BlogContent({ posts }: BlogContentProps) {
                 </Button>
               </div>
             </div>
+          )}
+          </>
           )}
         </div>
       </section>

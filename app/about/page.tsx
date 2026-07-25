@@ -1,10 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle2, Award, Users, Heart, Coffee, Globe, ShieldCheck, CreditCard, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Mazaya Dental Center | One-Day Dentistry in Bahrain",
+  description:
+    "Learn about Mazaya Dental Center — a fully digital dental practice in Isa Town, Bahrain. Pioneering dental tourism with world-renowned specialists, VIP lounge, and One-Day Dentistry. Open 7 days a week.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Mazaya Dental Center | One-Day Dentistry in Bahrain",
+    description:
+      "A fully digital dental practice in Isa Town, Bahrain. Pioneering dental tourism with international specialists, VIP amenities, and same-day restorations.",
+  },
+};
+
 
 export default function AboutPage() {
   return (
@@ -13,7 +29,7 @@ export default function AboutPage() {
       <section className="relative h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02178.JPG"
+            src="/DSC02178.webp"
             alt="Mazaya Dental Center"
             fill
             priority
@@ -152,11 +168,11 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              "/DSC02149.JPG",
-              "/DSC02178.JPG", 
-              "/DSC02180.JPG",
-              "/DSC02187.JPG",
-              "/DSC02189.JPG"
+              "/DSC02149.webp",
+              "/DSC02178.webp", 
+              "/DSC02180.webp",
+              "/DSC02187.webp",
+              "/DSC02189.webp"
             ].map((image, index) => (
               <Card key={index} className="border-none shadow-md overflow-hidden">
                 <div className="relative h-64">

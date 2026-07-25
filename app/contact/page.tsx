@@ -1,18 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, MessageSquare, CalendarDays, Instagram, Facebook, MessageCircle } from "lucide-react";
 import { FaSnapchat } from "react-icons/fa";
+import JsonLd from "@/components/JsonLd";
+import { faqItems } from "@/lib/departments";
+
+export const metadata: Metadata = {
+  title: "Contact Mazaya Dental Center | Book Appointment in Isa Town, Bahrain",
+  description:
+    "Contact Mazaya Dental Center in Isa Town, Bahrain. Call +973 17777234 (landline) or +973 39224333 (mobile). Open 7 days a week, 9 AM – 11 PM. Email info@mazayadc.com.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Mazaya Dental Center | Book Appointment",
+    description:
+      "Get in touch with Mazaya Dental Center. Call, email, or visit us in Isa Town, Bahrain. Open 7 days a week.",
+  },
+};
+
+// FAQ Page JSON-LD for AEO — makes FAQ answers citable by AI search engines
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02197.JPG"
+            src="/DSC02197.webp"
             alt="Contact Mazaya Dental Center"
             fill
             priority
@@ -220,50 +252,7 @@ export default function ContactPage() {
 
           <div className="max-w-3xl mx-auto">
             <div className="space-y-6">
-              {[
-                {
-                  question: "What is general dentistry?",
-                  answer: "General dentistry refers to the routine care and treatment of the teeth, gums, and mouth. Dentists in this field provide services such as cleanings, fillings, extractions, and preventative care.",
-                },
-                
-                { 
-                  question: "How often should I visit the dentist?",
-                  answer: "It's generally recommended to visit the dentist at least twice a year for routine check-ups and cleanings. However, if you have specific oral health concerns, you might need more frequent visits.",
-                },
-                {
-                  question: "What should I do if I have a toothache?",
-                  answer: "If you have a toothache, it's important to contact your dentist as soon as possible to determine the cause. In the meantime, over-the-counter pain relievers and warm saltwater rinses can help alleviate discomfort.",
-                },
-                
-                {
-                    question: "How can I prevent cavities?",
-                  answer: "Cavities are caused by tooth decay, which occurs when bacteria in the mouth produce acid from sugars. To prevent cavities, brush your teeth twice a day, floss daily, and visit the dentist regularly for cleanings.",
-                  },
-                {
-                  question: "What is a filling, and why would I need one?",
-                  answer: "A filling is used to restore a tooth that has been damaged by decay. The dentist removes the decayed portion of the tooth and fills the area with materials like composite resin, silver amalgam, or gold.",
-                },
-                {
-                  question: "What is a root canal, and when is it necessary?",
-                  answer: "A root canal is a treatment used to repair and save a tooth that has become infected or badly decayed. It involves removing the infected pulp from inside the tooth, cleaning the area, and sealing it.",
-                },
-                {
-                  question: "What is the best way to whiten my teeth?",
-                  answer: "Teeth whitening options include professional treatments provided by your dentist or over-the-counter products like whitening toothpaste and strips. Consulting your dentist will help you choose the safest and most effective option for your teeth.",
-                },
-                {
-                  question: "What is gum disease, and how can I prevent it?",
-                  answer: "Gum disease (gingivitis or periodontitis) is an infection of the gums caused by plaque buildup. Brushing, flossing, and regular dental check-ups can help prevent gum disease.",
-                },
-                {
-                  question: "What should I do if I have a broken or chipped tooth?",
-                  answer: "If you break or chip a tooth, contact your dentist immediately. They may be able to repair it with bonding, a crown, or other treatments depending on the extent of the damage.",
-                },
-                {
-                  question: "Is it safe to get dental X-rays?",
-                  answer: "Dental X-rays are generally safe, and the amount of radiation used is very low. Dentists only take X-rays when necessary for diagnosing or monitoring oral health.",
-                },
-              ].map((faq, index) => (
+              {faqItems.map((faq, index) => (
                 <div key={index} className="bg-gray-50 p-6 rounded-lg">
                   <h3 className="text-lg font-medium mb-2 font-heading">{faq.question}</h3>
                   <p className="text-muted-foreground">{faq.answer}</p>

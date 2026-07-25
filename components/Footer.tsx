@@ -1,19 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Instagram, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { FaSnapchat } from "react-icons/fa";  
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-secondary text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: About */}
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">Mazaya Dental Center</h3>
+            <h3 className="text-xl font-heading font-bold mb-4">{t.footer.aboutTitle}</h3>
             <p className="mb-4 text-gray-200">
-              Providing exceptional dental care with a patient-centered approach. Our mission is to create healthy, beautiful smiles that last a lifetime.
+              {t.footer.aboutDesc}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 rtl:space-x-reverse">
               <a href="https://www.facebook.com/profile.php?id=61559196819721" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary-foreground transition-colors duration-300">
                 <Facebook size={20} />
               </a>
@@ -33,31 +38,31 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-heading font-bold mb-4">{t.footer.quickLinks}</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Home
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
-                <Link href="/departments" className="text-gray-极200 hover:text-white transition-colors duration-300">
-                  Departments
+                <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
+                  {t.nav.departments}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Blog
+                  {t.nav.blog}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray200 hover:text-white transition-colors duration-300">
-                  About Us
+                <Link href="/about" className="text-gray-200 hover:text-white transition-colors duration-300">
+                  {t.nav.about}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Contact
+                  {t.nav.contact}
                 </Link>
               </li>
             </ul>
@@ -65,18 +70,8 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">Our Services</h3>
-            <ul className="space极-y-2">
-              <li>
-                <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  General Dentistry
-                </Link>
-              </li>
-              <li>
-                <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Cosmetic Dentistry
-                </Link>
-              </li>
+            <h3 className="text-xl font-heading font-bold mb-4">{t.footer.services}</h3>
+            <ul className="space-y-2">
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
                   Orthodontics
@@ -84,12 +79,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Pediatric Dentistry
+                  Pedodontics
                 </Link>
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Dental Implants
+                  Implantology
+                </Link>
+              </li>
+              <li>
+                <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
+                  Prosthodontics
+                </Link>
+              </li>
+              <li>
+                <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
+                  Periodontics
                 </Link>
               </li>
             </ul>
@@ -97,28 +102,27 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-heading font-bold mb-4">{t.footer.contactUs}</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="mr-2 h-5 w-5 text-primary-foreground shrink-0 mt-0.5" />
-                <span>Unit 6, Bldg. 515, Road 1332, Block 813, Kingdom of Bahrain</span>
+                <MapPin className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5 text-primary-foreground shrink-0 mt-0.5" />
+                <span>{t.footer.address}</span>
               </li>
               <li className="flex items-center">
-                <Phone className="mr-2 h-5 w-5 text-primary-foreground" />
+                <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5 text-primary-foreground shrink-0" />
                 <div className="flex flex-col">
-                  <span>Landline: +973 17777234</span>
-                  <span>Mobile:  +973 39224333
-                  </span>
+                  <span>+973 17777234</span>
+                  <span>+973 39224333</span>
                 </div>
               </li>
               <li className="flex items-center">
-                <Mail className="mr-2 h-5 w-5 text-primary-foreground" />
+                <Mail className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5 text-primary-foreground shrink-0" />
                 <span>info@mazayadc.com</span>
               </li>
               <li className="flex items-start">
-                <Clock className="mr-2 h-5 w-5 text-primary-foreground shrink-0 mt-0.5" />
+                <Clock className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5 text-primary-foreground shrink-0 mt-0.5" />
                 <div>
-                  <p>Monday - Sunday: 9:00 AM - 11:00 PM</p>
+                  <p>{t.footer.hours}</p>
                 </div>
               </li>
             </ul>
@@ -127,7 +131,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-12 pt-8 text-center">
           <p className="text-gray-300">
-            &copy; {new Date().getFullYear()} Mazaya Dental Center. All rights reserved.
+            &copy; {new Date().getFullYear()} {t.footer.copyright}
           </p>
         </div>
       </div>

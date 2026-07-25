@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X, CalendarDays, Clock, User, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface BookAppointmentModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface BookAppointmentModalProps {
 }
 
 export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmentModalProps) {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,7 +24,6 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission (e.g., API call)
     console.log("Form submitted:", formData);
     onClose();
   };
@@ -45,7 +46,7 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 rtl:left-4 rtl:right-auto text-gray-500 hover:text-gray-700"
               aria-label="Close modal"
             >
               <X size={20} />
@@ -53,9 +54,9 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
             {/* Modal Header */}
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold font-heading text-primary">Book an Appointment</h2>
+              <h2 className="text-2xl font-bold font-heading text-primary">{t.modal.title}</h2>
               <p className="text-muted-foreground mt-2">
-                Fill out the form below to schedule your visit.
+                {t.modal.subtitle}
               </p>
             </div>
 
@@ -63,12 +64,12 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Name */}
               <div className="space-y-2">
-                <label htmlFor="name" className="flex items-center text-sm font-medium">
-                  <User className="h-4 w-4 mr-2 text-primary" />
-                  Full Name
+                <label htmlFor="modal-name" className="flex items-center text-sm font-medium">
+                  <User className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-primary" />
+                  {t.contactSection.nameLabel}
                 </label>
                 <input
-                  id="name"
+                  id="modal-name"
                   type="text"
                   placeholder="John Doe"
                   value={formData.name}
@@ -80,12 +81,12 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Phone */}
               <div className="space-y-2">
-                <label htmlFor="phone" className="flex items-center text-sm font-medium">
-                  <Phone className="h-4 w-4 mr-2 text-primary" />
-                  Phone Number
+                <label htmlFor="modal-phone" className="flex items-center text-sm font-medium">
+                  <Phone className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-primary" />
+                  {t.contactSection.phoneLabel}
                 </label>
                 <input
-                  id="phone"
+                  id="modal-phone"
                   type="tel"
                   placeholder="+973 1234 5678"
                   value={formData.phone}
@@ -97,12 +98,12 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Email */}
               <div className="space-y-2">
-                <label htmlFor="email" className="flex items-center text-sm font-medium">
-                  <Mail className="h-4 w-4 mr-2 text-primary" />
-                  Email Address
+                <label htmlFor="modal-email" className="flex items-center text-sm font-medium">
+                  <Mail className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-primary" />
+                  {t.contactSection.emailLabel}
                 </label>
                 <input
-                  id="email"
+                  id="modal-email"
                   type="email"
                   placeholder="john@example.com"
                   value={formData.email}
@@ -114,12 +115,12 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Date */}
               <div className="space-y-2">
-                <label htmlFor="date" className="flex items-center text-sm font-medium">
-                  <CalendarDays className="h-4 w-4 mr-2 text-primary" />
-                  Appointment Date
+                <label htmlFor="modal-date" className="flex items-center text-sm font-medium">
+                  <CalendarDays className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-primary" />
+                  {t.modal.dateLabel}
                 </label>
                 <input
-                  id="date"
+                  id="modal-date"
                   type="date"
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -130,12 +131,12 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Time */}
               <div className="space-y-2">
-                <label htmlFor="time" className="flex items-center text-sm font-medium">
-                  <Clock className="h-4 w-4 mr-2 text-primary" />
-                  Preferred Time
+                <label htmlFor="modal-time" className="flex items-center text-sm font-medium">
+                  <Clock className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-primary" />
+                  {t.modal.timeLabel}
                 </label>
                 <input
-                  id="time"
+                  id="modal-time"
                   type="time"
                   value={formData.time}
                   onChange={(e) => setFormData({ ...formData, time: e.target.value })}
@@ -146,13 +147,13 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Message */}
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Additional Message
+                <label htmlFor="modal-message" className="text-sm font-medium">
+                  {t.modal.notesLabel}
                 </label>
                 <textarea
-                  id="message"
+                  id="modal-message"
                   rows={3}
-                  placeholder="Any specific requirements?"
+                  placeholder="..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
@@ -161,7 +162,7 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
 
               {/* Submit Button */}
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Book Now
+                {t.modal.submitButton}
               </Button>
             </form>
           </motion.div>
@@ -169,4 +170,4 @@ export default function BookAppointmentModal({ isOpen, onClose }: BookAppointmen
       )}
     </AnimatePresence>
   );
-} 
+}

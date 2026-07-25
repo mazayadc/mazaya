@@ -1,9 +1,26 @@
-import { createClient } from 'contentful';
+import { createClient, ContentfulClientApi } from 'contentful';
 
-export const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID!,  
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN!,
-});
+const spaceId = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '';
+const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || '';
+
+export const isContentfulConfigured = spaceId.length > 0 && accessToken.length > 0;
+
+function createContentfulClient(): ContentfulClientApi<undefined> | null {
+  if (!isContentfulConfigured) {
+    return null;
+  }
+  try {
+    return createClient({
+      space: spaceId,
+      accessToken: accessToken,
+    });
+  } catch (error) {
+    console.warn('Failed to initialize Contentful client:', error);
+    return null;
+  }
+}
+
+export const client = createContentfulClient();
 
 export interface BlogPost {
   sys: {

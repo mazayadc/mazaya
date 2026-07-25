@@ -10,12 +10,55 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Separator } from "@/components/ui/separator";
 import { CalendarDays, Clock, MapPin, Phone, Mail, ArrowRight, Star, CheckCircle2, Award, Users, Globe, Stethoscope, Gift, CreditCard } from "lucide-react";
 import BookAppointmentModal from "@/components/BookAppointmentModal";
+import JsonLd from "@/components/JsonLd";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+
+const reviewsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Mazaya Dental Center",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "4",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Ameera Shah" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care. Their professionalism and attention to detail are unmatched."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Rincy Neel" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "My root canal experience at Mazaya was excellent. The friendly staff immediately put me at ease, and Dr. Stanley's clear explanations calmed my nerves."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Vengilyn Castro" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+      "reviewBody": "Our children's dental visit to Mazaya was wonderful. The clinic's cleanliness and comfortable waiting area impressed us."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Samra Bint Ahmed" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "My first visit to Mazaya was fantastic. The professional yet friendly approach of the staff and dentists made me feel at ease."
+    }
+  ]
+};
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
+      <JsonLd data={reviewsJsonLd} />
       {/* Hero Section */}
       <section className="relative h-screen min-h-[800px] overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -36,18 +79,18 @@ export default function Home() {
         <div className="container relative z-10 h-full flex items-center">
           <div className="max-w-2xl lg:max-w-4xl space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-white leading-tight font-heading">
-              Mazaya Dental Center
+              {t.hero.title}
             </h1>
             <p className="text-lg md:text-lg text-gray-100 max-w-lg leading-relaxed">
-              Digital dental care with One-Day Dentistry. Crowns, bridges, and restorations in a single visit.
+              {t.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={() => setIsModalOpen(true)}
                 className="bg-primary hover:bg-primary/90 text-white px-6 py-5 text-base font-medium shadow-lg hover:shadow-primary/30 transition-all"
               >
-                <Phone className="mr-2 h-5 w-5" />
-                Book Now
+                <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                {t.hero.bookNow}
               </Button>  
 
               <Link href="/departments" className="w-full md:w-auto">
@@ -56,8 +99,8 @@ export default function Home() {
                   variant="outline" 
                   className="w-full md:w-auto border-white/50 hover:border-white bg-white/10 text-white px-6 py-5 text-base font-medium backdrop-blur-sm transition-all"
                 >
-                  <ArrowRight className="mr-2 h-5 w-5" />
-                  Services
+                  <ArrowRight className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                  {t.hero.services}
                 </Button>
               </Link>
             </div>
@@ -270,85 +313,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Add Insurance Partners Section */}
-      {/* <section className="py-16 bg-white">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Our Insurance Partners</h2>
-            <p className="text-lg text-muted-foreground">
-              We work with major insurance providers to make quality dental care accessible.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-          
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-xl flex items-center justify-center">
-                <p className="text-gray-400">[Insurance Logo]</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
-      {/* Add Special Offers Section */}
-      {/* <section className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-primary">
-              Special Offers
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Take advantage of our current promotional packages and discounts.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "New Patient Special",
-                description: "Comprehensive exam, cleaning, and X-rays package",
-                price: "49",
-                features: ["Complete Oral Examination", "Professional Cleaning", "Digital X-rays", "Treatment Plan Consultation"]
-              },
-              {
-                title: "Smile Makeover",
-                description: "Transform your smile with our cosmetic package",
-                price: "999",
-                features: ["Teeth Whitening", "Dental Veneers Consultation", "Digital Smile Design", "Treatment Plan"]
-              },
-              {
-                title: "Family Package",
-                description: "Special discount for families of 4 or more",
-                price: "199",
-                features: ["Family Dental Check-up", "Children's Dental Education", "Preventive Care Plan", "20% Off Additional Services"]
-              }
-            ].map((offer, index) => (
-              <Card key={index} className="overflow-hidden">
-                <CardHeader className="bg-primary/5 pb-8">
-                  <CardTitle className="text-2xl font-bold">{offer.title}</CardTitle>
-                  <CardDescription>{offer.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-primary">${offer.price}</span>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <ul className="space-y-4">
-                    {offer.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-primary" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full">Book Now</Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* About Section */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
@@ -691,26 +656,7 @@ export default function Home() {
         ></iframe>
       </section>
 
-      {/* Calendly Integration */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Schedule Your Appointment</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Choose a convenient time for your visit using our online scheduling system.
-            </p>
-          </div>
-          
-          <div className="bg-gray-100 p-4 rounded-lg text-center">
-            <p className="text-muted-foreground">
-              [Calendly integration widget would be placed here]
-            </p>
-            <Button className="mt-4">
-              Book Appointment
-            </Button>
-          </div>
-        </div>
-      </section>
+
 
       {/* Update Business Hours Section */}
       <section className="py-16 bg-white">

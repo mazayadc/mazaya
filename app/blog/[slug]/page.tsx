@@ -1,4 +1,4 @@
-import { client } from '@/lib/contentful';
+import { client, isContentfulConfigured } from '@/lib/contentful';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Clock, Share2, MessageCircle } from 'lucide-react';
@@ -47,6 +47,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }   
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {    
+  if (!isContentfulConfigured || !client) {
+    return null;
+  }
+
   try {
     const response = await client.getEntries({
       content_type: 'blogPage',

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Generate JSON-LD for all departments as MedicalProcedure schemas
+// Generate JSON-LD for all departments as MedicalProcedure schemas for AI search engines & Technical SEO
 const departmentsJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
@@ -40,67 +40,66 @@ export default function DepartmentsPage() {
       <JsonLd data={departmentsJsonLd} />
 
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center">
+      <section className="relative h-[45vh] min-h-[350px] flex items-center bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/DSC02182.webp"
             alt="Dental departments at Mazaya Dental Center"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            sizes="100vw"
+            className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-gray-950/40" />
         </div>
         
-        <div className="container relative">
+        <div className="container relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-heading">
               Comprehensive Dental Care
             </h1>
-            <p className="text-lg text-gray-200">
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed">
               Explore our complete range of dental services, each delivered by specialized experts using cutting-edge technology.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Static Crawlable Department Content (visible to search engines & AI) */}
-      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+      {/* Interactive Cards Section */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="container">
-          {/* Interactive client-side cards with modals */}
           <DepartmentsClient departments={departments} />
         </div>
       </section>
 
       {/* Static Full Service Listings — crawlable by search engines and AI */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 font-heading text-center text-primary">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-12 font-heading text-center text-gray-900">
             All Dental Services
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {departments.map((dept) => (
-              <div key={dept.id} className="space-y-4">
+              <div key={dept.id} className="bg-white p-6 rounded-xl border border-gray-200 space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 shrink-0">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl transform rotate-45" />
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <Image
                       src={dept.iconSrc}
                       alt={dept.iconAlt}
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      width={28}
+                      height={28}
+                      className="w-7 h-7 object-contain"
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold font-heading">{dept.name}</h3>
-                    <p className="text-muted-foreground text-sm">{dept.description}</p>
+                    <h3 className="text-lg font-bold font-heading text-gray-900">{dept.name}</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">{dept.description}</p>
                   </div>
                 </div>
-                <ul className="space-y-2 pl-16">
+                <ul className="space-y-2 pt-2 border-t border-gray-100">
                   {dept.services.map((service, index) => (
-                    <li key={index} className="flex items-start gap-2 text-gray-700">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
+                    <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-gray-700">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                       <span>{service}</span>
                     </li>
                   ))}

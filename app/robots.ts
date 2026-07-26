@@ -6,9 +6,24 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/_next/'],
+      },
+      {
+        userAgent: [
+          'GPTBot',
+          'ChatGPT-User',
+          'ClaudeBot',
+          'Claude-Web',
+          'PerplexityBot',
+          'Google-Extended',
+          'Applebot-Extended',
+          'Bytespider',
+          'CCBot',
+        ],
+        allow: '/',
       },
     ],
     sitemap: 'https://mazayadc.com/sitemap.xml',
+    host: 'https://mazayadc.com',
   };
 }

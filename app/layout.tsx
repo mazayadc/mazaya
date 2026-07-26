@@ -166,6 +166,7 @@ const clinicJsonLd = {
 };
 
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
+import MetaPixel from '@/components/MetaPixel';
 
 export default function RootLayout({
   children,
@@ -175,6 +176,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <MetaPixel />
         <LanguageProvider>
           <JsonLd data={clinicJsonLd} />
           <Navbar />

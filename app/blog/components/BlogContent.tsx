@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface BlogContentProps {
   posts: any[];
@@ -27,8 +28,6 @@ function calculateReadTime(content: any[]): string {
   const readTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
   
   if (readTimeMinutes < 1) {
-    return 'Less than 1 min read';
-  } else if (readTimeMinutes === 1) {
     return '1 min read';
   } else {
     return `${readTimeMinutes} mins read`;
@@ -37,6 +36,7 @@ function calculateReadTime(content: any[]): string {
 
 export default function BlogContent({ posts }: BlogContentProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const { t } = useLanguage();
   const postsPerPage = 6;
 
   // Calculate pagination
@@ -63,10 +63,10 @@ export default function BlogContent({ posts }: BlogContentProps) {
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-heading">
-              Mazaya Dental Insights
+              {t.blogContent.title}
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-8">
-              Expert advice and the latest updates on dental health from Mazaya's specialists.
+              {t.blogContent.subtitle}
             </p>
           </div>
         </div>
@@ -77,9 +77,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
         <div className="container">
           {posts.length === 0 ? (
             <div className="text-center py-16">
-              <h2 className="text-2xl font-bold mb-4 font-heading">Blog Coming Soon</h2>
+              <h2 className="text-2xl font-bold mb-4 font-heading">{t.blogContent.comingSoonTitle}</h2>
               <p className="text-muted-foreground max-w-lg mx-auto">
-                We&apos;re preparing expert dental health articles and tips from our specialists. Check back soon for the latest insights from Mazaya Dental Center.
+                {t.blogContent.comingSoonDesc}
               </p>
             </div>
           ) : (
@@ -127,7 +127,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                           <Clock className="h-4 w-4" />
                           <span>{post.fields.date}</span>
                           <span>•</span>
-                          <span>{post.fields.body ? calculateReadTime(post.fields.body.content) : '1 min read'}</span>
+                          <span>{post.fields.body ? calculateReadTime(post.fields.body.content) : `1 ${t.blogContent.readTime}`}</span>
                         </div>
                       </div>
                     </div>
@@ -147,7 +147,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   disabled={currentPage === 1}
                   className="border-primary/50 hover:border-primary"
                 >
-                  Previous
+                  {t.blogContent.previous}
                 </Button>
                 
                 {Array.from({ length: totalPages }).map((_, index) => (
@@ -167,7 +167,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   disabled={currentPage === totalPages}
                   className="border-primary/50 hover:border-primary"
                 >
-                  Next
+                  {t.blogContent.next}
                 </Button>
               </div>
             </div>

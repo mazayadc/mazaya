@@ -74,27 +74,27 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Orthodontics
+                  {t.depts.orthodontics.title}
                 </Link>
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Pedodontics
+                  {t.depts.pedodontics.title}
                 </Link>
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Implantology
+                  {t.depts.implantology.title}
                 </Link>
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Prosthodontics
+                  {t.depts.prosthodontics.title}
                 </Link>
               </li>
               <li>
                 <Link href="/departments" className="text-gray-200 hover:text-white transition-colors duration-300">
-                  Periodontics
+                  {t.depts.periodontics.title}
                 </Link>
               </li>
             </ul>

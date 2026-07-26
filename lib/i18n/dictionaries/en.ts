@@ -19,6 +19,32 @@ export const en = {
     learnMore: "Learn More",
     viewAll: "View All Services",
   },
+  depts: {
+    orthodontics: {
+      title: "Orthodontics",
+      description: "Specialized care for teeth alignment and bite correction using braces and aligners.",
+    },
+    pedodontics: {
+      title: "Pedodontics",
+      description: "Comprehensive dental care for children, ensuring healthy smiles from an early age.",
+    },
+    implantology: {
+      title: "Implantology",
+      description: "Advanced tooth replacement solutions with durable and natural-looking dental implants.",
+    },
+    prosthodontics: {
+      title: "Prosthodontics",
+      description: "Restorative treatments including crowns, bridges, and dentures for optimal oral function.",
+    },
+    periodontics: {
+      title: "Periodontics",
+      description: "Specialized care for gum health and treatment of periodontal diseases.",
+    },
+    endodontics: {
+      title: "Endodontics",
+      description: "Expert root canal treatments to save and preserve damaged teeth.",
+    },
+  },
   whyChoose: {
     title: "Why Choose Mazaya Dental Center?",
     subtitle: "Experience excellence in dental care with our unique combination of expertise, technology, and patient comfort.",
@@ -53,6 +79,28 @@ export const en = {
     title: "Patient Experiences",
     subtitle: "Discover the transformative journeys of our valued patients and their exceptional experiences at our clinic.",
   },
+  testimonialsList: [
+    {
+      name: "Ameera Shah",
+      service: "Comprehensive Dental Care",
+      content: "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care. Their professionalism and attention to detail are unmatched. From the warm welcome to the skilled treatment, every aspect was perfect. I wholeheartedly recommend Mazaya for anyone seeking premium dental services.",
+    },
+    {
+      name: "Rincy Neel",
+      service: "Root Canal Treatment",
+      content: "My root canal experience at Mazaya was excellent. The friendly staff immediately put me at ease, and Dr. Stanley's clear explanations calmed my nerves. The procedure was comfortable, with constant care checks, and the thorough aftercare instructions ensured proper healing. Their affordable treatment packages make them my top choice for dental care.",
+    },
+    {
+      name: "Vengilyn Castro",
+      service: "Pediatric Dental Care",
+      content: "Our children's dental visit to Mazaya was wonderful. The clinic's cleanliness and comfortable waiting area impressed us. Dr. Mary and Dr. Stan were exceptional - our kids experienced minimal discomfort during scaling and polishing. We especially appreciated Dr. Stan's patient explanation of proper dental care techniques. We'll definitely return for all our family's dental needs.",
+    },
+    {
+      name: "Samra Bint Ahmed",
+      service: "Comprehensive Dental Consultation",
+      content: "My first visit to Mazaya was fantastic. The professional yet friendly approach of the staff and dentists made me feel at ease. Dr. Stanley's expertise and attentive listening were particularly impressive. It's reassuring to find a dentist who truly understands and addresses your concerns. Thank you for the excellent care!",
+    },
+  ],
   contactSection: {
     title: "Connect With Mazaya",
     subtitle: "Experience world-class dental care at Mazaya. Our dedicated team is here to provide personalized treatment and exceptional service for all your dental needs.",
@@ -71,6 +119,30 @@ export const en = {
     phoneLabel: "Phone Number",
     messageLabel: "Message",
     sendButton: "Send Message",
+    placeholderName: "John Doe",
+    placeholderEmail: "john@example.com",
+    placeholderPhone: "(202) 555-1234",
+    placeholderMessage: "How can we help you?",
+  },
+  community: {
+    title: "Community Commitment",
+    subtitle: "We actively conduct charity drives in association with various NGOs and corporate partners, reinforcing our commitment to improving dental health awareness and accessibility for all.",
+    learnMore: "Learn More About Our Impact",
+  },
+  businessHours: {
+    title: "Business Hours",
+    subtitle: "We're open 7 days a week to serve your dental needs.",
+    days: {
+      Monday: "Monday",
+      Tuesday: "Tuesday",
+      Wednesday: "Wednesday",
+      Thursday: "Thursday",
+      Friday: "Friday",
+      Saturday: "Saturday",
+      Sunday: "Sunday",
+    },
+    fridayHours: "1:00 PM - 9:00 PM",
+    regularHours: "9:00 AM - 11:00 PM",
   },
   modal: {
     title: "Book an Appointment",
@@ -119,6 +191,15 @@ export const en = {
     hoursSubtitle: "We're open 7 days a week to serve your dental needs.",
     faqTitle: "Frequently Asked Questions",
     faqSubtitle: "Find answers to common questions about our services, appointments, and policies.",
+  },
+  blogContent: {
+    title: "Mazaya Dental Insights",
+    subtitle: "Expert advice and the latest updates on dental health from Mazaya's specialists.",
+    comingSoonTitle: "Blog Coming Soon",
+    comingSoonDesc: "We're preparing expert dental health articles and tips from our specialists. Check back soon for the latest insights from Mazaya Dental Center.",
+    previous: "Previous",
+    next: "Next",
+    readTime: "min read",
   },
   footer: {
     aboutTitle: "Mazaya Dental Center",

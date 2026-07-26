@@ -1,13 +1,11 @@
-  "use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Separator } from "@/components/ui/separator";
 import { CalendarDays, Clock, MapPin, Phone, Mail, ArrowRight, Star, CheckCircle2, Award, Users, Globe, Stethoscope, Gift, CreditCard } from "lucide-react";
 import BookAppointmentModal from "@/components/BookAppointmentModal";
 import JsonLd from "@/components/JsonLd";
@@ -29,25 +27,25 @@ const reviewsJsonLd = {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Ameera Shah" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care. Their professionalism and attention to detail are unmatched."
+      "reviewBody": "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care."
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Rincy Neel" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "My root canal experience at Mazaya was excellent. The friendly staff immediately put me at ease, and Dr. Stanley's clear explanations calmed my nerves."
+      "reviewBody": "My root canal experience at Mazaya was excellent."
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Vengilyn Castro" },
       "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
-      "reviewBody": "Our children's dental visit to Mazaya was wonderful. The clinic's cleanliness and comfortable waiting area impressed us."
+      "reviewBody": "Our children's dental visit to Mazaya was wonderful."
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Samra Bint Ahmed" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "My first visit to Mazaya was fantastic. The professional yet friendly approach of the staff and dentists made me feel at ease."
+      "reviewBody": "My first visit to Mazaya was fantastic."
     }
   ]
 };
@@ -55,6 +53,111 @@ const reviewsJsonLd = {
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useLanguage();
+
+  const servicesList = [
+    {
+      title: t.depts.orthodontics.title,
+      description: t.depts.orthodontics.description,
+      iconSrc: "/ortho.png",
+      alt: "Orthodontics Icon",
+    },
+    {
+      title: t.depts.pedodontics.title,
+      description: t.depts.pedodontics.description,
+      iconSrc: "/pedia.png",
+      alt: "Pedodontics Icon",
+    },
+    {
+      title: t.depts.implantology.title,
+      description: t.depts.implantology.description,
+      iconSrc: "/implant.png",
+      alt: "Implantology Icon",
+    },
+    {
+      title: t.depts.prosthodontics.title,
+      description: t.depts.prosthodontics.description,
+      iconSrc: "/clean.png",
+      alt: "Prosthodontics Icon",
+    },
+    {
+      title: t.depts.periodontics.title,
+      description: t.depts.periodontics.description,
+      iconSrc: "/periodo.png",
+      alt: "Periodontics Icon",
+    },
+    {
+      title: t.depts.endodontics.title,
+      description: t.depts.endodontics.description,
+      iconSrc: "/endo.png",
+      alt: "Endodontics Icon",
+    },
+  ];
+
+  const whyChooseFeatures = [
+    {
+      icon: <Award className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.oneDayTitle,
+      description: t.whyChoose.oneDayDesc,
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.expertiseTitle,
+      description: t.whyChoose.expertiseDesc,
+    },
+    {
+      icon: <Globe className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.tourismTitle,
+      description: t.whyChoose.tourismDesc,
+    },
+    {
+      icon: <Stethoscope className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.careTitle,
+      description: t.whyChoose.careDesc,
+    },
+    {
+      icon: <Gift className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.amenitiesTitle,
+      description: t.whyChoose.amenitiesDesc,
+    },
+    {
+      icon: <CreditCard className="h-8 w-8 text-primary" />,
+      title: t.whyChoose.paymentTitle,
+      description: t.whyChoose.paymentDesc,
+    },
+  ];
+
+  const differenceItems = [
+    {
+      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      title: t.difference.vipTitle,
+      description: t.difference.vipDesc,
+    },
+    {
+      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      title: t.difference.coffeeTitle,
+      description: t.difference.coffeeDesc,
+    },
+    {
+      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      title: t.difference.insuranceTitle,
+      description: t.difference.insuranceDesc,
+    },
+    {
+      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      title: t.difference.financingTitle,
+      description: t.difference.financingDesc,
+    },
+  ];
+
+  const daysList = [
+    { name: t.businessHours.days.Monday, hours: t.businessHours.regularHours },
+    { name: t.businessHours.days.Tuesday, hours: t.businessHours.regularHours },
+    { name: t.businessHours.days.Wednesday, hours: t.businessHours.regularHours },
+    { name: t.businessHours.days.Thursday, hours: t.businessHours.regularHours },
+    { name: t.businessHours.days.Friday, hours: t.businessHours.fridayHours },
+    { name: t.businessHours.days.Saturday, hours: t.businessHours.regularHours },
+    { name: t.businessHours.days.Sunday, hours: t.businessHours.regularHours },
+  ];
 
   return (
     <>
@@ -109,7 +212,7 @@ export default function Home() {
         
         <div className="absolute bottom-8 left-0 right-0 z-10">
           <div className="container flex justify-center">
-          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-center justify-center p-1 animate-bounce">
+            <div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-center justify-center p-1 animate-bounce">
               <div className="w-2 h-2 bg-white rounded-full" />
             </div>
           </div>
@@ -125,122 +228,36 @@ export default function Home() {
         
         <div className="container relative z-10 px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb极6 font-heading text-primary">
-              Our Dental Departments
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 font-heading text-primary">
+              {t.departmentsSection.title}
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              We provide comprehensive dental care services to meet all your oral health needs in one place.
+              {t.departmentsSection.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                title: "Orthodontics",
-                description: "Specialized care for teeth alignment and bite correction using braces and aligners.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/ortho.png"
-                      alt="Orthodontics Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                    </div>
-                ),
-              },
-              {
-                title: "Pedodontics",
-                description: "Comprehensive dental care for children, ensuring healthy smiles from an early age.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/pedia.png"
-                      alt="Pedodontics Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                ),
-              },
-              {
-                title: "Implantology",
-                description: "Advanced tooth replacement solutions with durable and natural-looking dental implants.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/implant.png"
-                      alt="Implantology Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                ),
-              },
-              {
-                title: "Prosthodontics",
-                description: "Restorative treatments including crowns, bridges, and dentures for optimal oral function.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/clean.png"
-                      alt="Prosthodontics Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                ),
-              },
-              {
-                title: "Periodontics",
-                description: "Specialized care for gum health and treatment of periodontal diseases.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/periodo.png"
-                      alt="Periodontics Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                ),
-              },
-              {
-                title: "Endodontics",
-                description: "Expert root canal treatments to save and preserve damaged teeth.",
-                icon: (
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                    <Image
-                      src="/endo.png"
-                      alt="Endodontics Icon"
-                      width={40}
-                      height={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    />
-                  </div>
-                ),
-              },
-            ].map((service, index) => (
+            {servicesList.map((service, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-white border border-gray-100 rounded-2xl sm:rounded-3xl shadow-sm sm:shadow-lg shadow-primary/5 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl" />
                 <div className="relative p-6 sm:p-8">
-                  <div className="mb-4 sm:mb-6">{service.icon}</div>
+                  <div className="mb-4 sm:mb-6">
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
+                      <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
+                      <Image
+                        src={service.iconSrc}
+                        alt={service.alt}
+                        width={40}
+                        height={40}
+                        className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      />
+                    </div>
+                  </div>
                   <h3 className="text-xl sm:text-2xl font-bold font-heading mb-3 sm:mb-4 text-gray-900">{service.title}</h3>
                   <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">{service.description}</p>
                   <Link href="/departments" className="inline-flex items-center text-primary font-medium group-hover:underline text-sm sm:text-base">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    {t.departmentsSection.learnMore}
+                    <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -249,58 +266,27 @@ export default function Home() {
 
           <div className="text-center mt-12 sm:mt-16">
             <Button asChild className="px-6 py-4 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
-              <Link href="/departments">View All Services</Link>
+              <Link href="/departments">{t.departmentsSection.viewAll}</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Add Why Choose Us Section */}
+      {/* Why Choose Us Section */}
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/dental-pattern.svg')] bg-[length:80px_80px] md:bg-[length:120px_120px] opacity-5" />
         <div className="container relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-primary">
-              Why Choose Mazaya Dental Center?
+              {t.whyChoose.title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Experience excellence in dental care with our unique combination of expertise, technology, and patient comfort.
+              {t.whyChoose.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Award className="h-8 w-8 text-primary" />,
-                title: "One-Day Dentistry",
-                description: "Get your crowns, bridges, and restorations in a single visit with our advanced digital technology."
-              },
-              {
-                icon: <Users className="h-8 w-8 text-primary" />,
-                title: "International Expertise",
-                description: "Access world-class dental care from renowned specialists from the UK, Luxembourg, and beyond."
-              },
-              {
-                icon: <Globe className="h-8 w-8 text-primary" />,
-                title: "Dental Tourism Pioneer",
-                description: "First center in Bahrain focusing on dental health tourism, making quality care accessible to all."
-              },
-              {
-                icon: <Stethoscope className="h-8 w-8 text-primary" />,
-                title: "Comprehensive Care",
-                description: "Full range of dental specialties under one roof for seamless, coordinated treatment."
-              },
-              {
-                icon: <Gift className="h-8 w-8 text-primary" />,
-                title: "Premium Amenities",
-                description: "Enjoy our VIP lounge and coffee shop while experiencing luxury dental care."
-              },
-              {
-                icon: <CreditCard className="h-8 w-8 text-primary" />,
-                title: "Flexible Payment Options",
-                description: "Multiple insurance affiliations and in-house financing plans available."
-              },
-            ].map((feature, index) => (
+            {whyChooseFeatures.map((feature, index) => (
               <div key={index} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="p-3 bg-primary/10 rounded-lg w-fit mb-6">
                   {feature.icon}
@@ -313,15 +299,13 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* About Section */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Enhanced Image Section */}
             <div className="relative group">
-              <div className="relative rounded-3xl overflow-hidden  transform transition-all duration-700 hover:scale-105 bg-gradient-to-br from-primary/10 to-white">
+              <div className="relative rounded-3xl overflow-hidden transform transition-all duration-700 hover:scale-105 bg-gradient-to-br from-primary/10 to-white">
                 <AspectRatio ratio={4/3}>
                   <div className="absolute inset-0 flex items-center justify-center p-8">
                     <div className="relative w-full h-full">
@@ -339,7 +323,7 @@ export default function Home() {
               </div>
               
               {/* Floating Rating Card */}
-              <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden md:block transform transition-all hover:scale-105">
+              <div className="absolute -bottom-8 -right-8 rtl:-left-8 rtl:right-auto bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden md:block transform transition-all hover:scale-105">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
@@ -348,43 +332,22 @@ export default function Home() {
                   </div>
                   <p className="text-2xl font-bold font-heading text-gray-900">4.9</p>
                 </div>
-                <p className="text-sm text-gray-500 mt-1">Patient Rating</p>
+                <p className="text-sm text-gray-500 mt-1">{t.difference.ratingLabel}</p>
               </div>
             </div>
             
             {/* Content Section */}
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold font-heading bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                The Mazaya Difference
+                {t.difference.title}
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                As the pioneer in dental health tourism in Bahrain, we bring world-renowned dentists from the UK, Luxembourg, and beyond, offering exceptional dental care with unmatched convenience and comfort.
+                {t.difference.description}
               </p>
               
               {/* Features Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
-                    title: "VIP Lounge",
-                    description: "Luxurious environment for comfortable consultations"
-                  },
-                  {
-                    icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
-                    title: "Coffee Shop",
-                    description: "Enjoy beverages while you wait"
-                  },
-                  {
-                    icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
-                    title: "Insurance Coverage",
-                    description: "Affiliated with major local & international providers"
-                  },
-                  {
-                    icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
-                    title: "Flexible Financing",
-                    description: "In-house payment plans available"
-                  }
-                ].map((item, index) => (
+                {differenceItems.map((item, index) => (
                   <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-primary/10 rounded-lg">
@@ -402,8 +365,8 @@ export default function Home() {
               {/* Animated Button */}
               <Button asChild className="px-8 py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/30">
                 <Link href="/about" className="flex items-center gap-2">
-                  Learn About Mazaya
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  {t.difference.learnAbout}
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                 </Link>
               </Button>
             </div>
@@ -417,40 +380,15 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-primary">
-              Patient Experiences
+              {t.testimonials.title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover the transformative journeys of our valued patients and their exceptional experiences at our clinic.
+              {t.testimonials.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Ameera Shah",
-                service: "Comprehensive Dental Care",
-                content: "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care. Their professionalism and attention to detail are unmatched. From the warm welcome to the skilled treatment, every aspect was perfect. I wholeheartedly recommend Mazaya for anyone seeking premium dental services.",
-                rating: 5,
-              },
-              {
-                name: "Rincy Neel",
-                service: "Root Canal Treatment",
-                content: "My root canal experience at Mazaya was excellent. The friendly staff immediately put me at ease, and Dr. Stanley's clear explanations calmed my nerves. The procedure was comfortable, with constant care checks, and the thorough aftercare instructions ensured proper healing. Their affordable treatment packages make them my top choice for dental care.",
-                rating: 5,
-              },
-              {
-                name: "Vengilyn Castro",
-                service: "Pediatric Dental Care",
-                content: "Our children's dental visit to Mazaya was wonderful. The clinic's cleanliness and comfortable waiting area impressed us. Dr. Mary and Dr. Stan were exceptional - our kids experienced minimal discomfort during scaling and polishing. We especially appreciated Dr. Stan's patient explanation of proper dental care techniques. We'll definitely return for all our family's dental needs.",
-                rating: 4,
-              },
-              {
-                name: "Samra Bint Ahmed",
-                service: "Comprehensive Dental Consultation",
-                content: "My first visit to Mazaya was fantastic. The professional yet friendly approach of the staff and dentists made me feel at ease. Dr. Stanley's expertise and attentive listening were particularly impressive. It's reassuring to find a dentist who truly understands and addresses your concerns. Thank you for the excellent care!",
-                rating: 5,
-              }
-            ].map((testimonial, index) => (
+            {t.testimonialsList.map((testimonial, index) => (
               <Card key={index} className="bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm hover:shadow-md transition-all p-6">
                 <div className="space-y-4">
                   <div>
@@ -459,14 +397,12 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      {Array.from({ length: index === 2 ? 4 : 5 }).map((_, i) => (
                         <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                       ))}
-                      {Array.from({ length: 5 - testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-gray-300" />
-                      ))}
+                      {index === 2 && <Star className="h-5 w-5 text-gray-300" />}
                     </div>
-                    <span className="text-sm text-muted-foreground">({testimonial.rating}/5)</span>
+                    <span className="text-sm text-muted-foreground">({index === 2 ? 4 : 5}/5)</span>
                   </div>
                   <p className="text-muted-foreground italic">"{testimonial.content}"</p>
                 </div>
@@ -483,10 +419,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold font-heading bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                Connect With Mazaya
+                {t.contactSection.title}
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Experience world-class dental care at Mazaya. Our dedicated team is here to provide personalized treatment and exceptional service for all your dental needs.
+                {t.contactSection.subtitle}
               </p>
               
               <div className="space-y-6">
@@ -494,10 +430,10 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">Location</h3>
+                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900">{t.contactSection.locationTitle}</h3>
                     <p className="text-gray-600">
-                    Flat No,6,7,8,9,10, Building No. 515, Road 1332, Block 813, Isa Town, Kingdom of Bahrain
+                      {t.contactSection.locationAddress}
                     </p>
                   </div>
                 </div>
@@ -506,10 +442,10 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">+973 17777234 - Landline</p>
-                    <p className="text-gray-600">+973 39224333 - Mobile</p>
+                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900">{t.contactSection.phoneTitle}</h3>
+                    <p className="text-gray-600">+973 17777234 - {t.contactSection.callLandline}</p>
+                    <p className="text-gray-600">+973 39224333 - {t.contactSection.callMobile}</p>
                   </div>
                 </div>
                 
@@ -517,8 +453,8 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">Email</h3>
+                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900">{t.contactSection.emailTitle}</h3>
                     <p className="text-gray-600">info@mazayadc.com</p>
                   </div>
                 </div>
@@ -527,10 +463,9 @@ export default function Home() {
                   <div className="p-3 bg-primary/10 rounded-lg">
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-gray-900">Hours</h3>
-                    <p className="text-gray-600">Open 7 days a week</p>
-                    <p className="text-gray-600">9:00 AM - 11:00 PM</p>
+                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900">{t.contactSection.hoursTitle}</h3>
+                    <p className="text-gray-600">{t.contactSection.hoursDesc}</p>
                   </div>
                 </div>
               </div>
@@ -538,22 +473,22 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="tel:+97317777234" className="w-full sm:w-auto">
                   <Button variant="outline" className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full border-primary hover:bg-primary/10 transition-all duration-300 transform hover:scale-105">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Landline
+                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                    {t.contactSection.callLandline}
                   </Button>
                 </a>
                 <a href="tel:+97339224333" className="w-full sm:w-auto">
                   <Button variant="outline" className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full border-primary hover:bg-primary/10 transition-all duration-300 transform hover:scale-105">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Mobile
+                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                    {t.contactSection.callMobile}
                   </Button>
                 </a>
                 <Button 
                   onClick={() => setIsModalOpen(true)} 
                   className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
                 >
-                  <CalendarDays className="mr-2 h-5 w-5" />
-                  Book Appointment
+                  <CalendarDays className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                  {t.nav.bookAppointment}
                 </Button>
               </div>
             </div>
@@ -561,9 +496,9 @@ export default function Home() {
             <div>
               <Card className="border-none shadow-2xl">
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-white p-8">
-                  <CardTitle className="text-3xl font-heading">Send Us a Message</CardTitle>
+                  <CardTitle className="text-3xl font-heading">{t.contactSection.formTitle}</CardTitle>
                   <CardDescription className="text-lg">
-                    We'll respond within 24 hours to discuss your dental needs.
+                    {t.contactSection.formDesc}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-8">
@@ -571,54 +506,54 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium text-gray-700">
-                          Full Name
+                          {t.contactSection.nameLabel}
                         </label>
                         <input
                           id="name"
                           type="text"
                           className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                          placeholder="John Doe"
+                          placeholder={t.contactSection.placeholderName}
                         />
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                          Email Address
+                          {t.contactSection.emailLabel}
                         </label>
                         <input
                           id="email"
                           type="email"
                           className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                          placeholder="john@example.com"
+                          placeholder={t.contactSection.placeholderEmail}
                         />
                       </div>
                     </div>
                     
                     <div className="space-y-2">
                       <label htmlFor="phone" className="text-sm font-medium text-gray-700">
-                        Phone Number
+                        {t.contactSection.phoneLabel}
                       </label>
                       <input
                         id="phone"
                         type="tel"
                         className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                        placeholder="(202) 555-1234"
+                        placeholder={t.contactSection.placeholderPhone}
                       />
                     </div>
                     
                     <div className="space-y-2">
                       <label htmlFor="message" className="text-sm font-medium text-gray-700">
-                        Message
+                        {t.contactSection.messageLabel}
                       </label>
                       <textarea
                         id="message"
                         rows={4}
                         className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                        placeholder="How can we help you?"
+                        placeholder={t.contactSection.placeholderMessage}
                       ></textarea>
                     </div>
                     
                     <Button type="submit" className="w-full py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
-                      Send Message
+                      {t.contactSection.sendButton}
                     </Button>
                   </form>
                 </CardContent>
@@ -627,22 +562,24 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Community Commitment Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Community Commitment</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">{t.community.title}</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We actively conduct charity drives in association with various NGOs and corporate partners, reinforcing our commitment to improving dental health awareness and accessibility for all.
+              {t.community.subtitle}
             </p>
           </div>
           <div className="flex justify-center">
             <Button asChild className="px-8 py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90">
-              <Link href="/about">Learn More About Our Impact</Link>
-              
+              <Link href="/about">{t.community.learnMore}</Link>
             </Button>
           </div>
         </div>
       </section>
+
       {/* Map Section */}
       <section className="h-[400px] relative">
         <iframe
@@ -656,42 +593,36 @@ export default function Home() {
         ></iframe>
       </section>
 
-
-
-      {/* Update Business Hours Section */}
+      {/* Business Hours Section */}
       <section className="py-16 bg-white">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 font-heading">Business Hours</h2>
+            <h2 className="text-3xl font-bold mb-4 font-heading">{t.businessHours.title}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're open 7 days a week to serve your dental needs.
+              {t.businessHours.subtitle}
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-          <Card className="border-none shadow-md">
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
-                      <div key={day} className="flex justify-between items-center pb-2 border-b">
-                        <div className="flex items-center">
-                          <Clock className="h-5 w-5 text-primary mr-2" />
-                          <span className="font-medium">{day}</span>
-                        </div>
-                        <span>
-                          {day === 'Friday' ? '1:00 PM - 9:00 PM' : '9:00 AM - 11:00 PM'}
-                        </span>
+            <Card className="border-none shadow-md">
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  {daysList.map((item, idx) => (
+                    <div key={idx} className="flex justify-between items-center pb-2 border-b">
+                      <div className="flex items-center">
+                        <Clock className="h-5 w-5 text-primary mr-2 rtl:ml-2 rtl:mr-0" />
+                        <span className="font-medium">{item.name}</span>
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      <span>{item.hours}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Add Community Commitment Section before Calendly */}
-     
       {/* Modal */}
       <BookAppointmentModal 
         isOpen={isModalOpen} 

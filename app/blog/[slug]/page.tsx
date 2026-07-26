@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Clock, Share2, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ReadAloud from '@/components/ReadAloud';
+import JsonLd from '@/components/JsonLd';
 
 interface BlogPost {
   fields: {
@@ -33,15 +34,38 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   
   if (!post) {
     return {
-      title: 'Post Not Found',
+      title: 'Post Not Found | Mazaya Dental Center',
     };
   }
 
+  const description = post.fields.body?.content[0]?.content[0]?.value || 'Read expert dental insights from Mazaya Dental Center.';
+  const imageUrl = post.fields.image ? `https:${post.fields.image.fields.file.url}` : 'https://mazayadc.com/MAZAYA logo Transparent 01.png';
+
   return {
-    title: post.fields.title,
-    description: post.fields.body?.content[0]?.content[0]?.value || '',
+    title: `${post.fields.title} | Mazaya Dental Center`,
+    description: description,
+    alternates: {
+      canonical: `/blog/${params.slug}/`,
+    },
     openGraph: {
-      images: post.fields.image ? [`https:${post.fields.image.fields.file.url}`] : [],
+      title: `${post.fields.title} | Mazaya Dental Center`,
+      description: description,
+      url: `https://mazayadc.com/blog/${params.slug}/`,
+      type: 'article',
+      publishedTime: post.fields.date,
+      authors: [post.fields.author || 'Mazaya Dental Specialists'],
+      images: [
+        {
+          url: imageUrl,
+          alt: post.fields.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.fields.title} | Mazaya Dental Center`,
+      description: description,
+      images: [imageUrl],
     },
   };
 }   
@@ -83,14 +107,7 @@ function calculateReadTime(content: any[]): string {
   });
   
   const readTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
-  
-  if (readTimeMinutes < 1) {
-    return 'Less than 1 min read';
-  } else if (readTimeMinutes === 1) {
-    return '1 min read';
-  } else {
-    return `${readTimeMinutes} mins read`;
-  }
+  return readTimeMinutes < 1 ? '1 min read' : `${readTimeMinutes} mins read`;
 }
 
 function extractTextContent(content: any[]): string {
@@ -119,6 +136,33 @@ export default async function BlogDetailPage({
   }
 
   const readTime = post.fields.body ? calculateReadTime(post.fields.body.content) : '1 min read';
+  const fullText = post.fields.body ? extractTextContent(post.fields.body.content) : '';
+  const imageUrl = post.fields.image ? `https:${post.fields.image.fields.file.url}` : 'https://mazayadc.com/MAZAYA logo Transparent 01.png';
+
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.fields.title,
+    "description": fullText.substring(0, 160),
+    "image": imageUrl,
+    "datePublished": post.fields.date,
+    "author": {
+      "@type": "Organization",
+      "name": post.fields.author || "Mazaya Dental Center",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mazaya Dental Center",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mazayadc.com/MAZAYA logo Transparent 01.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://mazayadc.com/blog/${params.slug}/`
+    }
+  };
 
   const renderContent = (content: any[]) => {
     return content.map((item, index) => {
@@ -140,84 +184,61 @@ export default async function BlogDetailPage({
   };
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Content Section */}
-      <div className="container py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
-          <div className="prose prose-lg max-w-3xl mx-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h1 className="text-4xl font-bold mt-8">{post.fields.title}</h1>
-            </div>
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-4 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  <span>{readTime}</span>
+    <>
+      <JsonLd data={blogPostingJsonLd} />
+      <article className="min-h-screen bg-white">
+        <div className="container py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 font-heading mb-4">{post.fields.title}</h1>
+              
+              <div className="flex items-center justify-between pb-6 border-b border-gray-200 mb-8">
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="h-4 w-4 text-primary" />
+                    <span>{readTime}</span>
+                  </div>
+                  <span>•</span>
+                  <span>{post.fields.date}</span>
                 </div>
-                <span>•</span>
-                <span>{post.fields.date}</span>
+                <ReadAloud text={fullText} />
               </div>
-              <ReadAloud text={post.fields.body ? extractTextContent(post.fields.body.content) : ''} />
+              
+              {post.fields.image && (
+                <div className="relative w-full h-80 sm:h-96 mb-8 rounded-xl overflow-hidden border border-gray-200">
+                  <Image
+                    src={imageUrl}
+                    alt={post.fields.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              )}
+
+              <div className="prose prose-lg text-gray-700 leading-relaxed">
+                {post.fields.body && renderContent(post.fields.body.content)}
+              </div>
             </div>
             
-            {post.fields.image && (
-              <div className="relative w-full h-96 mb-12 rounded-lg overflow-hidden">
-                <Image
-                  src={`https:${post.fields.image.fields.file.url}`}
-                  alt={post.fields.title}
-                  fill
-                  className="object-cover"
-                />
+            <aside className="space-y-6">
+              <div className="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <h3 className="font-bold text-gray-900 text-sm mb-2 font-heading">Read Aloud</h3>
+                <ReadAloud text={fullText} />
               </div>
-            )}
-            {post.fields.body && renderContent(post.fields.body.content)}
-          </div>
-          
-          {/* Interactive Sidebar */}
-          <aside className="space-y-8 sticky top-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-              <h3 className="font-semibold mb-4">Reading Progress</h3>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Time to read:</span>
-                  <span>{readTime}</span>
-                </div>
-                <div className="h-2 bg-gray-100 rounded-full">
-                  <div className="h-full bg-primary rounded-full" style={{ width: '0%' }}></div>
-                </div>
-              </div>
-            </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-              <h3 className="font-semibold mb-4">Share this post</h3>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="hover:scale-105 transition-transform">
-                  <Share2 className="h-4 w-4 mr-2" />
-                  Share
+              <div className="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <h3 className="font-bold text-gray-900 text-sm mb-2 font-heading">Book Consultation</h3>
+                <p className="text-xs text-gray-600 mb-4">Schedule your appointment with our dental specialists today.</p>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-xs">
+                  Book Appointment
                 </Button>
               </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-              <h3 className="font-semibold mb-4">Comments</h3>
-              <div className="text-gray-500">
-                <MessageCircle className="h-6 w-6 mb-2" />
-                <p>Comments are coming soon!</p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-              <h3 className="font-semibold mb-4">Did you know?</h3>
-              <p className="text-gray-600">This blog uses AI-powered features to enhance your reading experience!</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
-              <h3 className="font-semibold mb-4">Read Aloud</h3>
-              <ReadAloud text={post.fields.body ? extractTextContent(post.fields.body.content) : ''} />
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Users, Coffee, Globe, ShieldCheck, CreditCard, Clock } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -11,32 +10,32 @@ export default function AboutClient() {
 
   const features = [
     {
-      icon: <Users className="h-8 w-8 text-primary" />,
+      icon: <Users className="h-6 w-6 text-primary" />,
       title: t.difference.vipTitle,
       description: t.difference.vipDesc,
     },
     {
-      icon: <Coffee className="h-8 w-8 text-primary" />,
+      icon: <Coffee className="h-6 w-6 text-primary" />,
       title: t.difference.coffeeTitle,
       description: t.difference.coffeeDesc,
     },
     {
-      icon: <Globe className="h-8 w-8 text-primary" />,
+      icon: <Globe className="h-6 w-6 text-primary" />,
       title: t.whyChoose.tourismTitle,
       description: t.whyChoose.tourismDesc,
     },
     {
-      icon: <ShieldCheck className="h-8 w-8 text-primary" />,
+      icon: <ShieldCheck className="h-6 w-6 text-primary" />,
       title: t.difference.insuranceTitle,
       description: t.difference.insuranceDesc,
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-primary" />,
+      icon: <CreditCard className="h-6 w-6 text-primary" />,
       title: t.difference.financingTitle,
       description: t.difference.financingDesc,
     },
     {
-      icon: <Clock className="h-8 w-8 text-primary" />,
+      icon: <Clock className="h-6 w-6 text-primary" />,
       title: t.contactPage.hoursTitle,
       description: t.contactSection.hoursDesc,
     },
@@ -45,25 +44,25 @@ export default function AboutClient() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center overflow-hidden">
+      <section className="relative h-[55vh] min-h-[400px] flex items-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0 z-0">
           <Image
             src="/DSC02178.webp"
             alt="Mazaya Dental Center"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            className="object-cover opacity-60"
             style={{ objectPosition: 'center center' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-gray-950/40" />
         </div>
         
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-heading">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-heading">
               {t.aboutPage.heroTitle}
             </h1>
-            <p className="text-base md:text-lg text-gray-200 mb-8">
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed">
               {t.aboutPage.heroSubtitle}
             </p>
           </div>
@@ -71,89 +70,87 @@ export default function AboutClient() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">{t.aboutPage.approachTitle}</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold font-heading text-gray-900">{t.aboutPage.approachTitle}</h2>
+              <p className="text-gray-600 leading-relaxed">
                 {t.aboutPage.approachText1}
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-gray-600 leading-relaxed">
                 {t.aboutPage.approachText2}
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="text-center">
-                  <p className="text-4xl font-bold text-primary mb-2">7</p>
-                  <p className="text-muted-foreground">{t.aboutPage.daysWeek}</p>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                  <p className="text-3xl font-bold text-primary">7</p>
+                  <p className="text-xs font-semibold text-gray-600 mt-1">{t.aboutPage.daysWeek}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-4xl font-bold text-primary mb-2">14</p>
-                  <p className="text-muted-foreground">{t.aboutPage.hoursDaily}</p>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                  <p className="text-3xl font-bold text-primary">14</p>
+                  <p className="text-xs font-semibold text-gray-600 mt-1">{t.aboutPage.hoursDaily}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-4xl font-bold text-primary mb-2">1</p>
-                  <p className="text-muted-foreground">{t.aboutPage.oneDay}</p>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                  <p className="text-3xl font-bold text-primary">1</p>
+                  <p className="text-xs font-semibold text-gray-600 mt-1">{t.aboutPage.oneDay}</p>
                 </div>
-                <div className="text-center">
-                  <p className="text-4xl font-bold text-primary mb-2">8+</p>
-                  <p className="text-muted-foreground">{t.aboutPage.insurancePlans}</p>
+                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 text-center">
+                  <p className="text-3xl font-bold text-primary">8+</p>
+                  <p className="text-xs font-semibold text-gray-600 mt-1">{t.aboutPage.insurancePlans}</p>
                 </div>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative rounded-lg overflow-hidden">
-                <AspectRatio ratio={4/3}>
-                  <Image
-                    src="/MAZAYA logo Transparent 01.png"
-                    alt="Mazaya Dental Center"
-                    fill
-                    className="object-contain"
-                  />
-                </AspectRatio>
-              </div>
+
+            <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 p-6">
+              <AspectRatio ratio={4/3}>
+                <Image
+                  src="/MAZAYA logo Transparent 01.png"
+                  alt="Mazaya Dental Center"
+                  fill
+                  className="object-contain p-4"
+                />
+              </AspectRatio>
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Features Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-100">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">{t.aboutPage.featuresTitle}</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold font-heading text-gray-900 mb-3">{t.aboutPage.featuresTitle}</h2>
+            <p className="text-gray-600">
               {t.aboutPage.featuresSubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center p-6 border-none shadow-md hover:shadow-lg transition-all">
-                <CardContent className="pt-6">
-                  <div className="p-3 bg-primary/10 rounded-lg w-fit mx-auto mb-4">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 font-heading">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+              <div key={index} className="bg-white p-6 rounded-xl border border-gray-200">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Our Clinic Photos Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-20 bg-white border-t border-gray-100">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">{t.aboutPage.clinicTitle}</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold font-heading text-gray-900 mb-3">{t.aboutPage.clinicTitle}</h2>
+            <p className="text-gray-600">
               {t.aboutPage.clinicSubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               "/DSC02149.webp",
               "/DSC02178.webp", 
@@ -161,8 +158,8 @@ export default function AboutClient() {
               "/DSC02187.webp",
               "/DSC02189.webp"
             ].map((image, index) => (
-              <Card key={index} className="border-none shadow-md overflow-hidden">
-                <div className="relative h-64">
+              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                <div className="relative h-60">
                   <Image
                     src={image}
                     alt="Mazaya Dental Clinic"
@@ -170,7 +167,7 @@ export default function AboutClient() {
                     className="object-cover"
                   />
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>

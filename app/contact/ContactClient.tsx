@@ -25,24 +25,24 @@ export default function ContactClient() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <section className="relative h-[45vh] min-h-[350px] flex items-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0 z-0">
           <Image
             src="/DSC02197.webp"
             alt="Contact Mazaya Dental Center"
             fill
             priority
-            className="object-cover brightness-[0.85]"
+            className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-gray-950/40" />
         </div>
         
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-heading">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-heading">
               {t.contactPage.heroTitle}
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8">
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed">
               {t.contactPage.heroSubtitle}
             </p>
           </div>
@@ -50,138 +50,121 @@ export default function ContactClient() {
       </section>
 
       {/* Contact Information Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Call Card */}
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <CardHeader className="text-center pb-2">
-                <div className="mx-auto bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Phone className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-2xl font-heading text-gray-900">{t.contactPage.callUsTitle}</CardTitle>
-                <CardDescription className="text-gray-500">{t.contactPage.callUsDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center pt-4 space-y-3">
-                <div>
-                  <p className="text-lg font-semibold text-gray-800">+973 17777234</p>
-                  <p className="text-sm text-gray-500">{t.contactSection.callLandline}</p>
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-gray-800">+973 39224333</p>
-                  <p className="text-sm text-gray-500">{t.contactSection.callMobile}</p>
-                </div>
-                <a href="tel:+97317777234" className="inline-block">
-                  <Button variant="outline" className="mt-4 border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
+            <div className="border border-gray-200 bg-white p-6 rounded-xl text-center">
+              <div className="mx-auto bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <Phone className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{t.contactPage.callUsTitle}</h3>
+              <p className="text-xs text-gray-500 mb-4">{t.contactPage.callUsDesc}</p>
+              <div className="space-y-1 text-sm text-gray-700 font-medium">
+                <p>+973 17777234 ({t.contactSection.callLandline})</p>
+                <p>+973 39224333 ({t.contactSection.callMobile})</p>
+              </div>
+              <div className="mt-5">
+                <a href="tel:+97317777234">
+                  <Button variant="outline" size="sm" className="border-gray-300">
+                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactSection.callLandline}
                   </Button>
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Email Card */}
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <CardHeader className="text-center pb-2">
-                <div className="mx-auto bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Mail className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-2xl font-heading text-gray-900">{t.contactPage.emailUsTitle}</CardTitle>
-                <CardDescription className="text-gray-500">{t.contactPage.emailUsDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center pt-4">
-                <p className="text-lg font-semibold text-gray-800">info@mazayadc.com</p>
-                <p className="text-sm text-gray-500 mb-4">{t.contactPage.emailUsDesc}</p>
-                <Link href="mailto:info@mazayadc.com" className="inline-block">
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                    <Mail className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
+            <div className="border border-gray-200 bg-white p-6 rounded-xl text-center">
+              <div className="mx-auto bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <Mail className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{t.contactPage.emailUsTitle}</h3>
+              <p className="text-xs text-gray-500 mb-4">{t.contactPage.emailUsDesc}</p>
+              <p className="text-sm font-medium text-gray-700 mb-5">info@mazayadc.com</p>
+              <div>
+                <Link href="mailto:info@mazayadc.com">
+                  <Button variant="outline" size="sm" className="border-gray-300">
+                    <Mail className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactSection.emailTitle}
                   </Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Visit Card */}
-            <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <CardHeader className="text-center pb-2">
-                <div className="mx-auto bg-primary/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <MapPin className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-2xl font-heading text-gray-900">{t.contactPage.visitUsTitle}</CardTitle>
-                <CardDescription className="text-gray-500">{t.contactPage.visitUsDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center pt-4">
-                <p className="text-lg font-semibold text-gray-800">{t.contactSection.locationAddress}</p>
-                <a href="https://maps.app.goo.gl/qjJcJVZZMY6Gxbgf6" target="_blank" rel="noopener noreferrer" className="inline-block mt-4">
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                    <MapPin className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
+            <div className="border border-gray-200 bg-white p-6 rounded-xl text-center">
+              <div className="mx-auto bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <MapPin className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{t.contactPage.visitUsTitle}</h3>
+              <p className="text-xs text-gray-500 mb-4">{t.contactPage.visitUsDesc}</p>
+              <p className="text-xs text-gray-700 font-medium mb-5">{t.contactSection.locationAddress}</p>
+              <div>
+                <a href="https://maps.app.goo.gl/qjJcJVZZMY6Gxbgf6" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="sm" className="border-gray-300">
+                    <MapPin className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactPage.getDirections}
                   </Button>
                 </a>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Social Media Section */}
-          <div className="mt-24">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6 font-heading bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+          <div className="mt-16 pt-16 border-t border-gray-100">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-2">
                 {t.contactPage.socialTitle}
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-sm text-gray-600">
                 {t.contactPage.socialSubtitle}
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {[
                   {
                     platform: "Instagram",
-                    icon: <Instagram className="h-10 w-10 text-white" />,
+                    icon: <Instagram className="h-6 w-6 text-primary" />,
                     url: "https://www.instagram.com/mazaya.edc?igsh=MWV1ODRsb3d2ODlobQ%3D%3D&utm_source=qr",
-                    bg: "bg-gradient-to-br from-pink-500 to-purple-600",
                   },
                   {
                     platform: "TikTok",
                     icon: (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-10 w-10 text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-primary">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.10z"/>
                       </svg>
                     ),
                     url: "https://www.tiktok.com/@mazayabh?_t=8rOMH90x4iI&_r=1",
-                    bg: "bg-gradient-to-br from-black to-gray-900",
                   },
                   {
                     platform: "Snapchat",
-                    icon: <FaSnapchat className="h-10 w-10 text-white" />,
+                    icon: <FaSnapchat className="h-6 w-6 text-primary" />,
                     url: "https://snapchat.com/t/LHo1AOSN",
-                    bg: "bg-gradient-to-br from-yellow-400 to-yellow-500",
                   },
                   {
                     platform: "Facebook",
-                    icon: <Facebook className="h-10 w-10 text-white" />,
+                    icon: <Facebook className="h-6 w-6 text-primary" />,
                     url: "https://www.facebook.com/profile.php?id=61559196819721",
-                    bg: "bg-gradient-to-br from-blue-600 to-blue-700",
                   },
                 ].map((social) => (
                   <Link
                     key={social.platform}
                     href={social.url}
                     target="_blank"
-                    className={`${social.bg} p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2`}
+                    className="p-5 border border-gray-200 rounded-xl bg-gray-50 hover:border-primary/40 flex flex-col items-center justify-center transition-colors"
                   >
-                    <div className="flex flex-col items-center justify-center h-full">
-                      <div className="mb-4">{social.icon}</div>
-                      <span className="text-2xl font-semibold text-white">{social.platform}</span>
-                    </div>
+                    <div className="mb-2">{social.icon}</div>
+                    <span className="text-sm font-semibold text-gray-800">{social.platform}</span>
                   </Link>
                 ))}
               </div>
             </div>
           </div>
 
-          <section className="h-[400px] bg-white mt-16">
+          <section className="h-[350px] bg-white mt-16 border border-gray-200 rounded-xl overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.0456052774434!2d50.55942427563794!3d26.162644177102262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49afe9fbe4a535%3A0xaaa418f0653d50b1!2sMazaya%20Dental%20Center!5e0!3m2!1sen!2sin!4v1741886257295!5m2!1sen!2sin" 
               width="100%"
@@ -194,54 +177,48 @@ export default function ContactClient() {
           </section>
 
           {/* Business Hours */}
-          <div className="mt-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 font-heading">{t.businessHours.title}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="mt-16 max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold font-heading text-gray-900">{t.businessHours.title}</h2>
+              <p className="text-sm text-gray-600 mt-1">
                 {t.businessHours.subtitle}
               </p>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              <Card className="border-none shadow-md">
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    {daysList.map((item, idx) => (
-                      <div key={idx} className="flex justify-between items-center pb-2 border-b">
-                        <div className="flex items-center">
-                          <Clock className="h-5 w-5 text-primary mr-2 rtl:ml-2 rtl:mr-0" />
-                          <span className="font-medium">{item.name}</span>
-                        </div>
-                        <span>{item.hours}</span>
-                      </div>
-                    ))}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <div className="divide-y divide-gray-200">
+                {daysList.map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center py-2.5 text-sm">
+                    <div className="flex items-center text-gray-800">
+                      <Clock className="h-4 w-4 text-primary mr-2 rtl:ml-2 rtl:mr-0 shrink-0" />
+                      <span className="font-medium">{item.name}</span>
+                    </div>
+                    <span className="text-gray-600 font-mono text-xs">{item.hours}</span>
                   </div>
-                </CardContent>
-              </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">{t.contactPage.faqTitle}</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
+        <div className="container max-w-3xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold font-heading text-gray-900 mb-2">{t.contactPage.faqTitle}</h2>
+            <p className="text-sm text-gray-600">
               {t.contactPage.faqSubtitle}
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
-              {faqItems.map((faq, index) => (
-                <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-medium mb-2 font-heading">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
+          <div className="space-y-4">
+            {faqItems.map((faq, index) => (
+              <div key={index} className="bg-white p-5 rounded-xl border border-gray-200">
+                <h3 className="text-base font-bold text-gray-900 mb-1.5 font-heading">{faq.question}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

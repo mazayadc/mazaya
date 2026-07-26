@@ -95,32 +95,32 @@ export default function Home() {
 
   const whyChooseFeatures = [
     {
-      icon: <Award className="h-8 w-8 text-primary" />,
+      icon: <Award className="h-6 w-6 text-primary" />,
       title: t.whyChoose.oneDayTitle,
       description: t.whyChoose.oneDayDesc,
     },
     {
-      icon: <Users className="h-8 w-8 text-primary" />,
+      icon: <Users className="h-6 w-6 text-primary" />,
       title: t.whyChoose.expertiseTitle,
       description: t.whyChoose.expertiseDesc,
     },
     {
-      icon: <Globe className="h-8 w-8 text-primary" />,
+      icon: <Globe className="h-6 w-6 text-primary" />,
       title: t.whyChoose.tourismTitle,
       description: t.whyChoose.tourismDesc,
     },
     {
-      icon: <Stethoscope className="h-8 w-8 text-primary" />,
+      icon: <Stethoscope className="h-6 w-6 text-primary" />,
       title: t.whyChoose.careTitle,
       description: t.whyChoose.careDesc,
     },
     {
-      icon: <Gift className="h-8 w-8 text-primary" />,
+      icon: <Gift className="h-6 w-6 text-primary" />,
       title: t.whyChoose.amenitiesTitle,
       description: t.whyChoose.amenitiesDesc,
     },
     {
-      icon: <CreditCard className="h-8 w-8 text-primary" />,
+      icon: <CreditCard className="h-6 w-6 text-primary" />,
       title: t.whyChoose.paymentTitle,
       description: t.whyChoose.paymentDesc,
     },
@@ -128,22 +128,22 @@ export default function Home() {
 
   const differenceItems = [
     {
-      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      icon: <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />,
       title: t.difference.vipTitle,
       description: t.difference.vipDesc,
     },
     {
-      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      icon: <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />,
       title: t.difference.coffeeTitle,
       description: t.difference.coffeeDesc,
     },
     {
-      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      icon: <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />,
       title: t.difference.insuranceTitle,
       description: t.difference.insuranceDesc,
     },
     {
-      icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
+      icon: <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />,
       title: t.difference.financingTitle,
       description: t.difference.financingDesc,
     },
@@ -162,45 +162,46 @@ export default function Home() {
   return (
     <>
       <JsonLd data={reviewsJsonLd} />
+      
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[800px] overflow-hidden">
+      <section className="relative h-[85vh] min-h-[600px] overflow-hidden bg-gray-900">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full opacity-60"
             style={{ objectPosition: 'center 30%' }}
           >
             <source src="/mazaya_hero_video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/60 to-transparent" />
         </div>
         
         <div className="container relative z-10 h-full flex items-center">
-          <div className="max-w-2xl lg:max-w-4xl space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-white leading-tight font-heading">
+          <div className="max-w-2xl space-y-6">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight font-heading">
               {t.hero.title}
             </h1>
-            <p className="text-lg md:text-lg text-gray-100 max-w-lg leading-relaxed">
+            <p className="text-lg text-gray-200 leading-relaxed max-w-xl">
               {t.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-white px-6 py-5 text-base font-medium shadow-lg hover:shadow-primary/30 transition-all"
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white font-medium"
               >
                 <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
                 {t.hero.bookNow}
               </Button>  
 
-              <Link href="/departments" className="w-full md:w-auto">
+              <Link href="/departments">
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full md:w-auto border-white/50 hover:border-white bg-white/10 text-white px-6 py-5 text-base font-medium backdrop-blur-sm transition-all"
+                  className="w-full sm:w-auto border-white/40 bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-colors"
                 >
                   <ArrowRight className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
                   {t.hero.services}
@@ -209,63 +210,44 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
-        <div className="absolute bottom-8 left-0 right-0 z-10">
-          <div className="container flex justify-center">
-            <div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-center justify-center p-1 animate-bounce">
-              <div className="w-2 h-2 bg-white rounded-full" />
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Services Overview */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white" />
-          <div className="absolute inset-0 bg-[url('/images/dental-pattern.svg')] bg-[length:80px_80px] md:bg-[length:120px_120px] opacity-10" />
-        </div>
-        
-        <div className="container relative z-10 px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 font-heading text-primary">
+      <section className="py-20 bg-white">
+        <div className="container px-4 sm:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 font-heading mb-4">
               {t.departmentsSection.title}
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600">
               {t.departmentsSection.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesList.map((service, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-white border border-gray-100 rounded-2xl sm:rounded-3xl shadow-sm sm:shadow-lg shadow-primary/5 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl" />
-                <div className="relative p-6 sm:p-8">
-                  <div className="mb-4 sm:mb-6">
-                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6">
-                      <div className="absolute inset-0 bg-primary/10 rounded-xl sm:rounded-2xl transform rotate-45" />
-                      <Image
-                        src={service.iconSrc}
-                        alt={service.alt}
-                        width={40}
-                        height={40}
-                        className="w-8 h-8 sm:w-10 sm:h-10 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-heading mb-3 sm:mb-4 text-gray-900">{service.title}</h3>
-                  <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">{service.description}</p>
-                  <Link href="/departments" className="inline-flex items-center text-primary font-medium group-hover:underline text-sm sm:text-base">
-                    {t.departmentsSection.learnMore}
-                    <ArrowRight className="ml-2 rtl:mr-2 rtl:ml-0 h-4 w-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                  </Link>
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 hover:border-primary/50 hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+                  <Image
+                    src={service.iconSrc}
+                    alt={service.alt}
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 object-contain"
+                  />
                 </div>
+                <h3 className="text-xl font-bold font-heading mb-2 text-gray-900">{service.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">{service.description}</p>
+                <Link href="/departments" className="inline-flex items-center text-primary font-semibold hover:underline text-sm">
+                  {t.departmentsSection.learnMore}
+                  <ArrowRight className="ml-1.5 rtl:mr-1.5 rtl:ml-0 h-4 w-4" />
+                </Link>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12 sm:mt-16">
-            <Button asChild className="px-6 py-4 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 rounded-lg font-semibold">
               <Link href="/departments">{t.departmentsSection.viewAll}</Link>
             </Button>
           </div>
@@ -273,26 +255,25 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/dental-pattern.svg')] bg-[length:80px_80px] md:bg-[length:120px_120px] opacity-5" />
-        <div className="container relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-primary">
+      <section className="py-20 bg-gray-50 border-y border-gray-100">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 font-heading mb-4">
               {t.whyChoose.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600">
               {t.whyChoose.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseFeatures.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="p-3 bg-primary/10 rounded-lg w-fit mb-6">
+              <div key={index} className="bg-white p-6 rounded-xl border border-gray-200">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -300,111 +281,85 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Enhanced Image Section */}
-            <div className="relative group">
-              <div className="relative rounded-3xl overflow-hidden transform transition-all duration-700 hover:scale-105 bg-gradient-to-br from-primary/10 to-white">
-                <AspectRatio ratio={4/3}>
-                  <div className="absolute inset-0 flex items-center justify-center p-8">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/MAZAYA logo Transparent 01.png"
-                        alt="Mazaya Dental Logo"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  </div>
-                </AspectRatio>
-                <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-white/10 to-transparent" />
-                <div className="absolute inset-0 border-2 border-white/10 rounded-3xl pointer-events-none" />
-              </div>
-              
-              {/* Floating Rating Card */}
-              <div className="absolute -bottom-8 -right-8 rtl:-left-8 rtl:right-auto bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden md:block transform transition-all hover:scale-105">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-6 w-6 text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-2xl font-bold font-heading text-gray-900">4.9</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 p-8 flex items-center justify-center">
+              <AspectRatio ratio={4/3}>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src="/MAZAYA logo Transparent 01.png"
+                    alt="Mazaya Dental Logo"
+                    fill
+                    className="object-contain p-4"
+                  />
                 </div>
-                <p className="text-sm text-gray-500 mt-1">{t.difference.ratingLabel}</p>
-              </div>
+              </AspectRatio>
             </div>
             
-            {/* Content Section */}
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold font-heading bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                {t.difference.title}
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
+            <div className="space-y-6">
+              <div>
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider">{t.difference.ratingLabel}: 4.9 ★★★★★</span>
+                <h2 className="text-3xl font-bold font-heading text-gray-900 mt-2">
+                  {t.difference.title}
+                </h2>
+              </div>
+              
+              <p className="text-gray-600 leading-relaxed">
                 {t.difference.description}
               </p>
               
-              {/* Features Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 {differenceItems.map((item, index) => (
-                  <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1">
-                    <div className="flex items-center gap-4">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                        <p className="text-sm text-gray-500">{item.description}</p>
-                      </div>
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50">
+                    {item.icon}
+                    <div>
+                      <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
+                      <p className="text-xs text-gray-500">{item.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Animated Button */}
-              <Button asChild className="px-8 py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary/30">
-                <Link href="/about" className="flex items-center gap-2">
-                  {t.difference.learnAbout}
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                </Link>
-              </Button>
+              <div className="pt-2">
+                <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold">
+                  <Link href="/about" className="flex items-center gap-2">
+                    {t.difference.learnAbout}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white via-white/95 to-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/dental-pattern.svg')] bg-[length:80px_80px] md:bg-[length:120px_120px] opacity-5" />
-        <div className="container relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading text-primary">
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 font-heading mb-4">
               {t.testimonials.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-600">
               {t.testimonials.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.testimonialsList.map((testimonial, index) => (
-              <Card key={index} className="bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm hover:shadow-md transition-all p-6">
-                <div className="space-y-4">
+              <Card key={index} className="border border-gray-200 bg-white p-5 rounded-xl shadow-none">
+                <div className="space-y-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900">{testimonial.name}</h3>
-                    <p className="text-sm text-primary">{testimonial.service}</p>
+                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                    <p className="text-xs text-primary font-medium">{testimonial.service}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {Array.from({ length: index === 2 ? 4 : 5 }).map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                      {index === 2 && <Star className="h-5 w-5 text-gray-300" />}
-                    </div>
-                    <span className="text-sm text-muted-foreground">({index === 2 ? 4 : 5}/5)</span>
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    {Array.from({ length: index === 2 ? 4 : 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
                   </div>
-                  <p className="text-muted-foreground italic">"{testimonial.content}"</p>
+                  <p className="text-xs text-gray-600 leading-relaxed italic">"{testimonial.content}"</p>
                 </div>
               </Card>
             ))}
@@ -413,175 +368,163 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/dental-pattern.svg')] bg-[length:80px_80px] md:bg-[length:120px_120px] opacity-5" />
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold font-heading bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold font-heading text-gray-900">
                 {t.contactSection.title}
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 {t.contactSection.subtitle}
               </p>
               
-              <div className="space-y-6">
-                <div className="flex items-start bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
-                    <h3 className="font-semibold text-gray-900">{t.contactSection.locationTitle}</h3>
-                    <p className="text-gray-600">
-                      {t.contactSection.locationAddress}
-                    </p>
+              <div className="space-y-4 pt-2">
+                <div className="flex items-start p-4 rounded-xl border border-gray-200 bg-gray-50">
+                  <MapPin className="h-5 w-5 text-primary mt-1 shrink-0" />
+                  <div className="ml-3 rtl:mr-3 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900 text-sm">{t.contactSection.locationTitle}</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">{t.contactSection.locationAddress}</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
-                    <h3 className="font-semibold text-gray-900">{t.contactSection.phoneTitle}</h3>
-                    <p className="text-gray-600">+973 17777234 - {t.contactSection.callLandline}</p>
-                    <p className="text-gray-600">+973 39224333 - {t.contactSection.callMobile}</p>
+                <div className="flex items-start p-4 rounded-xl border border-gray-200 bg-gray-50">
+                  <Phone className="h-5 w-5 text-primary mt-1 shrink-0" />
+                  <div className="ml-3 rtl:mr-3 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900 text-sm">{t.contactSection.phoneTitle}</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">+973 17777234 ({t.contactSection.callLandline})</p>
+                    <p className="text-gray-600 text-xs">+973 39224333 ({t.contactSection.callMobile})</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
-                    <h3 className="font-semibold text-gray-900">{t.contactSection.emailTitle}</h3>
-                    <p className="text-gray-600">info@mazayadc.com</p>
+                <div className="flex items-start p-4 rounded-xl border border-gray-200 bg-gray-50">
+                  <Mail className="h-5 w-5 text-primary mt-1 shrink-0" />
+                  <div className="ml-3 rtl:mr-3 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900 text-sm">{t.contactSection.emailTitle}</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">info@mazayadc.com</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Clock className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="ml-4 rtl:mr-4 rtl:ml-0">
-                    <h3 className="font-semibold text-gray-900">{t.contactSection.hoursTitle}</h3>
-                    <p className="text-gray-600">{t.contactSection.hoursDesc}</p>
+                <div className="flex items-start p-4 rounded-xl border border-gray-200 bg-gray-50">
+                  <Clock className="h-5 w-5 text-primary mt-1 shrink-0" />
+                  <div className="ml-3 rtl:mr-3 rtl:ml-0">
+                    <h3 className="font-semibold text-gray-900 text-sm">{t.contactSection.hoursTitle}</h3>
+                    <p className="text-gray-600 text-xs mt-0.5">{t.contactSection.hoursDesc}</p>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="tel:+97317777234" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full border-primary hover:bg-primary/10 transition-all duration-300 transform hover:scale-105">
-                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a href="tel:+97317777234">
+                  <Button variant="outline" size="sm" className="border-gray-300">
+                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactSection.callLandline}
                   </Button>
                 </a>
-                <a href="tel:+97339224333" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full border-primary hover:bg-primary/10 transition-all duration-300 transform hover:scale-105">
-                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                <a href="tel:+97339224333">
+                  <Button variant="outline" size="sm" className="border-gray-300">
+                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactSection.callMobile}
                   </Button>
                 </a>
                 <Button 
                   onClick={() => setIsModalOpen(true)} 
-                  className="w-full sm:w-auto px-4 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-white"
                 >
-                  <CalendarDays className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
+                  <CalendarDays className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4" />
                   {t.nav.bookAppointment}
                 </Button>
               </div>
             </div>
             
-            <div>
-              <Card className="border-none shadow-2xl">
-                <CardHeader className="bg-gradient-to-r from-primary/5 to-white p-8">
-                  <CardTitle className="text-3xl font-heading">{t.contactSection.formTitle}</CardTitle>
-                  <CardDescription className="text-lg">
-                    {t.contactSection.formDesc}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-gray-700">
-                          {t.contactSection.nameLabel}
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                          placeholder={t.contactSection.placeholderName}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                          {t.contactSection.emailLabel}
-                        </label>
-                        <input
-                          id="email"
-                          type="email"
-                          className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                          placeholder={t.contactSection.placeholderEmail}
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium text-gray-700">
-                        {t.contactSection.phoneLabel}
+            <Card className="border border-gray-200 shadow-sm bg-white p-6 rounded-2xl">
+              <CardHeader className="p-0 mb-6">
+                <CardTitle className="text-2xl font-bold font-heading text-gray-900">{t.contactSection.formTitle}</CardTitle>
+                <CardDescription className="text-gray-600 mt-1 text-sm">
+                  {t.contactSection.formDesc}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-0">
+                <form className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="name" className="text-xs font-semibold text-gray-700">
+                        {t.contactSection.nameLabel}
                       </label>
                       <input
-                        id="phone"
-                        type="tel"
-                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                        placeholder={t.contactSection.placeholderPhone}
+                        id="name"
+                        type="text"
+                        className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none"
+                        placeholder={t.contactSection.placeholderName}
                       />
                     </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium text-gray-700">
-                        {t.contactSection.messageLabel}
+                    <div className="space-y-1.5">
+                      <label htmlFor="email" className="text-xs font-semibold text-gray-700">
+                        {t.contactSection.emailLabel}
                       </label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                        placeholder={t.contactSection.placeholderMessage}
-                      ></textarea>
+                      <input
+                        id="email"
+                        type="email"
+                        className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none"
+                        placeholder={t.contactSection.placeholderEmail}
+                      />
                     </div>
-                    
-                    <Button type="submit" className="w-full py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
-                      {t.contactSection.sendButton}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+                  </div>
+                  
+                  <div className="space-y-1.5">
+                    <label htmlFor="phone" className="text-xs font-semibold text-gray-700">
+                      {t.contactSection.phoneLabel}
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none"
+                      placeholder={t.contactSection.placeholderPhone}
+                    />
+                  </div>
+                  
+                  <div className="space-y-1.5">
+                    <label htmlFor="message" className="text-xs font-semibold text-gray-700">
+                      {t.contactSection.messageLabel}
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={3}
+                      className="w-full p-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all outline-none"
+                      placeholder={t.contactSection.placeholderMessage}
+                    ></textarea>
+                  </div>
+                  
+                  <Button type="submit" className="w-full py-3 text-sm font-semibold rounded-lg bg-primary hover:bg-primary/90 text-white">
+                    {t.contactSection.sendButton}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Community Commitment Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">{t.community.title}</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <h2 className="text-2xl font-bold font-heading text-gray-900">{t.community.title}</h2>
+            <p className="text-gray-600 text-sm leading-relaxed">
               {t.community.subtitle}
             </p>
-          </div>
-          <div className="flex justify-center">
-            <Button asChild className="px-8 py-6 text-lg font-semibold rounded-full bg-primary hover:bg-primary/90">
-              <Link href="/about">{t.community.learnMore}</Link>
-            </Button>
+            <div className="pt-2">
+              <Button asChild size="sm" variant="outline" className="border-gray-300 text-gray-800">
+                <Link href="/about">{t.community.learnMore}</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="h-[400px] relative">
+      <section className="h-[350px] relative border-t border-gray-200">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.0456052774434!2d50.55942427563794!3d26.162644177102262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49afe9fbe4a535%3A0xaaa418f0653d50b1!2sMazaya%20Dental%20Center!5e0!3m2!1sen!2sin!4v1741886257295!5m2!1sen!2sin" 
           width="100%"
@@ -594,31 +537,27 @@ export default function Home() {
       </section>
 
       {/* Business Hours Section */}
-      <section className="py-16 bg-white">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 font-heading">{t.businessHours.title}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container max-w-3xl">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold font-heading text-gray-900">{t.businessHours.title}</h2>
+            <p className="text-sm text-gray-600 mt-1">
               {t.businessHours.subtitle}
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <Card className="border-none shadow-md">
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  {daysList.map((item, idx) => (
-                    <div key={idx} className="flex justify-between items-center pb-2 border-b">
-                      <div className="flex items-center">
-                        <Clock className="h-5 w-5 text-primary mr-2 rtl:ml-2 rtl:mr-0" />
-                        <span className="font-medium">{item.name}</span>
-                      </div>
-                      <span>{item.hours}</span>
-                    </div>
-                  ))}
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+            <div className="divide-y divide-gray-200">
+              {daysList.map((item, idx) => (
+                <div key={idx} className="flex justify-between items-center py-2.5 text-sm">
+                  <div className="flex items-center text-gray-800">
+                    <Clock className="h-4 w-4 text-primary mr-2 rtl:ml-2 rtl:mr-0 shrink-0" />
+                    <span className="font-medium">{item.name}</span>
+                  </div>
+                  <span className="text-gray-600 font-mono text-xs">{item.hours}</span>
                 </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>

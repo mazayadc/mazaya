@@ -1,20 +1,15 @@
 import { client, isContentfulConfigured } from '@/lib/contentful';
-import Image from 'next/image';
+import { getLocalBlogPostBySlug, LOCAL_BLOG_POSTS } from '@/lib/blogData';
 import { notFound } from 'next/navigation';
-import { Clock, Share2, MessageCircle } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ReadAloud from '@/components/ReadAloud';
 import JsonLd from '@/components/JsonLd';
+import LocalBlogClient from './components/LocalBlogClient';
 
-interface BlogPost {
+interface ContentfulBlogPost {
+  isLocal?: false;
   fields: {
-    image?: {
-      fields: {
-        file: {
-          url: string;
-        };
-      };
-    };
     title: string;
     date: string;
     readTime?: string;
@@ -27,6 +22,24 @@ interface BlogPost {
   };
 }
 
+interface LocalBlogPostWrapped {
+  isLocal: true;
+  localData: ReturnType<typeof getLocalBlogPostBySlug> extends infer T ? NonNullable<T> : never;
+  fields: {
+    title: string;
+    date: string;
+    readTime: string;
+    slug: string;
+    author: string;
+    tags: string[];
+    body?: {
+      content: any[];
+    };
+  };
+}
+
+type BlogPostUnion = ContentfulBlogPost | LocalBlogPostWrapped;
+
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -38,8 +51,32 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
+  if (post.isLocal) {
+    const localPost = post.localData;
+    return {
+      title: `${localPost.title.en} | Mazaya Dental Center`,
+      description: localPost.seo.metaDescriptionEn,
+      keywords: localPost.seo.keywords,
+      alternates: {
+        canonical: `/blog/${params.slug}/`,
+      },
+      openGraph: {
+        title: `${localPost.title.en} | Mazaya Dental Center`,
+        description: localPost.seo.metaDescriptionEn,
+        url: `https://mazayadc.com/blog/${params.slug}/`,
+        type: 'article',
+        publishedTime: localPost.date,
+        authors: [localPost.author],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${localPost.title.en} | Mazaya Dental Center`,
+        description: localPost.seo.metaDescriptionEn,
+      },
+    };
+  }
+
   const description = post.fields.body?.content[0]?.content[0]?.value || 'Read expert dental insights from Mazaya Dental Center.';
-  const imageUrl = post.fields.image ? `https:${post.fields.image.fields.file.url}` : 'https://mazayadc.com/MAZAYA logo Transparent 01.png';
 
   return {
     title: `${post.fields.title} | Mazaya Dental Center`,
@@ -54,23 +91,33 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       type: 'article',
       publishedTime: post.fields.date,
       authors: [post.fields.author || 'Mazaya Dental Specialists'],
-      images: [
-        {
-          url: imageUrl,
-          alt: post.fields.title,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${post.fields.title} | Mazaya Dental Center`,
       description: description,
-      images: [imageUrl],
     },
   };
-}   
+}
 
-async function getBlogPost(slug: string): Promise<BlogPost | null> {    
+async function getBlogPost(slug: string): Promise<BlogPostUnion | null> {
+  // Check local static blog posts first
+  const localPost = getLocalBlogPostBySlug(slug);
+  if (localPost) {
+    return {
+      isLocal: true,
+      localData: localPost,
+      fields: {
+        title: localPost.title.en,
+        date: localPost.date,
+        readTime: localPost.readTimeEn,
+        slug: localPost.slug,
+        author: localPost.author,
+        tags: localPost.tags,
+      },
+    };
+  }
+
   if (!isContentfulConfigured || !client) {
     return null;
   }
@@ -86,9 +133,9 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
       return null;
     }
 
-    return response.items[0] as unknown as BlogPost;
+    return response.items[0] as unknown as ContentfulBlogPost;
   } catch (error) {
-    console.error('Error fetching blog post:', error);
+    console.error('Error fetching Contentful blog post:', error);
     return null;
   }
 }
@@ -135,16 +182,62 @@ export default async function BlogDetailPage({
     notFound();
   }
 
+  if (post.isLocal) {
+    const localPost = post.localData;
+    const blogPostingJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": localPost.title.en,
+      "description": localPost.seo.metaDescriptionEn,
+      "datePublished": localPost.date,
+      "author": {
+        "@type": "Organization",
+        "name": localPost.author,
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mazaya Dental Center",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mazayadc.com/MAZAYA logo Transparent 01.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://mazayadc.com/blog/${params.slug}/`
+      }
+    };
+
+    const faqJsonLd = localPost.content.en.faqs ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": localPost.content.en.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    } : null;
+
+    return (
+      <>
+        <JsonLd data={blogPostingJsonLd} />
+        {faqJsonLd && <JsonLd data={faqJsonLd} />}
+        <LocalBlogClient post={localPost} />
+      </>
+    );
+  }
+
   const readTime = post.fields.body ? calculateReadTime(post.fields.body.content) : '1 min read';
   const fullText = post.fields.body ? extractTextContent(post.fields.body.content) : '';
-  const imageUrl = post.fields.image ? `https:${post.fields.image.fields.file.url}` : 'https://mazayadc.com/MAZAYA logo Transparent 01.png';
 
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.fields.title,
     "description": fullText.substring(0, 160),
-    "image": imageUrl,
     "datePublished": post.fields.date,
     "author": {
       "@type": "Organization",
@@ -203,19 +296,6 @@ export default async function BlogDetailPage({
                 </div>
                 <ReadAloud text={fullText} />
               </div>
-              
-              {post.fields.image && (
-                <div className="relative w-full h-80 sm:h-96 mb-8 rounded-xl overflow-hidden border border-gray-200">
-                  <Image
-                    src={imageUrl}
-                    alt={post.fields.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 768px"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              )}
 
               <div className="prose prose-lg text-gray-700 leading-relaxed">
                 {post.fields.body && renderContent(post.fields.body.content)}

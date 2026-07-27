@@ -27,7 +27,7 @@ const reviewsJsonLd = {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Ameera Shah" },
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": "I'm incredibly grateful to the Mazaya Dental Center team for their exceptional care."
+      "reviewBody": "I'm very grateful to the Mazaya Dental Center team for their great care."
     },
     {
       "@type": "Review",
@@ -163,8 +163,8 @@ export default function HomeClient() {
     <>
       <JsonLd data={reviewsJsonLd} />
       
-      {/* Hero Section */}
-      <section className="relative h-[85vh] min-h-[600px] overflow-hidden bg-gray-900">
+      {/* Full-Width Stretched Video Hero Section */}
+      <section className="relative w-full h-[75vh] min-h-[520px] overflow-hidden bg-gray-950 flex items-center">
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
@@ -173,27 +173,30 @@ export default function HomeClient() {
             playsInline
             preload="metadata"
             poster="/DSC02178.webp"
-            className="object-cover w-full h-full opacity-60"
+            className="object-cover w-full h-full opacity-65"
             style={{ objectPosition: 'center 30%' }}
           >
             <source src="/mazaya_hero_video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 via-gray-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/65 to-transparent" />
         </div>
         
-        <div className="container relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-2xl space-y-6">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight font-heading">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
+              Mazaya Dental Center • Isa Town
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight font-heading">
               {t.hero.title}
             </h1>
-            <p className="text-lg text-gray-200 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed max-w-xl">
               {t.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button 
                 onClick={() => setIsModalOpen(true)}
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white font-medium"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg"
               >
                 <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
                 {t.hero.bookNow}
@@ -203,7 +206,7 @@ export default function HomeClient() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-white/40 bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-colors"
+                  className="w-full sm:w-auto border-white/40 bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-colors backdrop-blur-sm font-semibold"
                 >
                   <ArrowRight className="mr-2 rtl:ml-2 rtl:mr-0 h-5 w-5" />
                   {t.hero.services}

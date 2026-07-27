@@ -164,7 +164,7 @@ export default function DepartmentsClient({ departments }: DepartmentsClientProp
                 {t.nav.bookAppointment}
               </Button>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-semibold">
+                <Button size="lg" variant="outline" className="border-white/80 bg-white/10 text-white hover:bg-white hover:text-primary font-semibold backdrop-blur-sm">
                   {t.nav.contact}      
                 </Button>
               </Link>

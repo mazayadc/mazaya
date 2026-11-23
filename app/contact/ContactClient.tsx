@@ -61,8 +61,7 @@ export default function ContactClient() {
               <h3 className="text-xl font-bold text-gray-900 mb-1">{t.contactPage.callUsTitle}</h3>
               <p className="text-xs text-gray-500 mb-4">{t.contactPage.callUsDesc}</p>
               <div className="space-y-1 text-sm text-gray-700 font-medium">
-                <p>+973 17777234 ({t.contactSection.callLandline})</p>
-                <p>+973 39224333 ({t.contactSection.callMobile})</p>
+                <p>+973 17777234</p>
               </div>
               <div className="mt-5">
                 <a href="tel:+97317777234">

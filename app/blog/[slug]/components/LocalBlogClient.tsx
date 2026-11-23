@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Clock, Phone, MapPin, CheckCircle2, BookOpen, Calendar, User, ChevronRight, MessageCircle, ChevronDown } from 'lucide-react';
+import { Clock, Phone, MapPin, CheckCircle2, BookOpen, Calendar, User, ChevronRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ReadAloud from '@/components/ReadAloud';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -120,10 +120,10 @@ export default function LocalBlogClient({ post }: LocalBlogClientProps) {
                       </a>
                     </Button>
                     <Button asChild variant="outline" className="border-emerald-300/40 text-white hover:bg-emerald-800 font-semibold text-sm">
-                      <a href="https://wa.me/97339224333" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <MessageCircle className="w-4 h-4 text-emerald-400" />
-                        <span>{isAr ? 'تواصل عبر الواتساب' : 'WhatsApp Us'}</span>
-                      </a>
+                      <Link href="/contact" className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-emerald-400" />
+                        <span>{isAr ? 'حجز موعد عبر الموقع' : 'Book Online'}</span>
+                      </Link>
                     </Button>
                   </div>
                 </div>

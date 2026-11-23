@@ -397,8 +397,7 @@ export default function HomeClient() {
                   <Phone className="h-5 w-5 text-primary mt-1 shrink-0" />
                   <div className="ml-3 rtl:mr-3 rtl:ml-0">
                     <h3 className="font-semibold text-gray-900 text-sm">{t.contactSection.phoneTitle}</h3>
-                    <p className="text-gray-600 text-xs mt-0.5">+973 17777234 ({t.contactSection.callLandline})</p>
-                    <p className="text-gray-600 text-xs">+973 39224333 ({t.contactSection.callMobile})</p>
+                    <p className="text-gray-600 text-xs mt-0.5">+973 17777234</p>
                   </div>
                 </div>
                 
@@ -424,12 +423,6 @@ export default function HomeClient() {
                   <Button variant="outline" size="sm" className="border-gray-300">
                     <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
                     {t.contactSection.callLandline}
-                  </Button>
-                </a>
-                <a href="tel:+97339224333">
-                  <Button variant="outline" size="sm" className="border-gray-300">
-                    <Phone className="mr-2 rtl:ml-2 rtl:mr-0 h-4 w-4 text-primary" />
-                    {t.contactSection.callMobile}
                   </Button>
                 </a>
                 <Button 

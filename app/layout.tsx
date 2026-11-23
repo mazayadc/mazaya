@@ -75,7 +75,7 @@ const clinicJsonLd = {
   "logo": "https://mazayadc.com/MAZAYA logo Transparent 01.png",
   "image": "https://mazayadc.com/DSC02178.webp",
   "description": "Mazaya Dental Center is a fully digital dental practice in Isa Town, Bahrain offering One-Day Dentistry, dental implants, orthodontics, and comprehensive oral care across 6 specialized departments.",
-  "telephone": ["+973 17777234", "+973 39224333"],
+  "telephone": "+973 17777234",
   "email": "info@mazayadc.com",
   "address": {
     "@type": "PostalAddress",

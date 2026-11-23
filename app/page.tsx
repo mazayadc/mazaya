@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "dDjP-IWTFzi3cISGiGwai0Vn44EShUC4MxUI9U8kyn0",
+  },
   openGraph: {
     title: "Mazaya Dental Center | Digital Dental Care in Bahrain",
     description:

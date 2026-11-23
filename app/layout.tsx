@@ -167,6 +167,7 @@ const clinicJsonLd = {
 
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 import MetaPixel from '@/components/MetaPixel';
+import GoogleTag from '@/components/GoogleTag';
 
 export default function RootLayout({
   children,
@@ -175,6 +176,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <GoogleTag />
+      </head>
       <body className={inter.className}>
         <MetaPixel />
         <LanguageProvider>

@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: 'dDjP-IWTFzi3cISGiGwai0Vn44EShUC4MxUI9U8kyn0',
+  },
 };
 
 const clinicJsonLd = {

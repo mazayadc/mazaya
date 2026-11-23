@@ -6,7 +6,7 @@ import ContactClient from "./ContactClient";
 export const metadata: Metadata = {
   title: "Contact Mazaya Dental Center | Book Appointment in Isa Town, Bahrain",
   description:
-    "Contact Mazaya Dental Center in Isa Town, Bahrain. Call +973 17777234 (landline) or +973 39224333 (mobile). Open 7 days a week, 9 AM – 11 PM. Email info@mazayadc.com.",
+    "Contact Mazaya Dental Center in Isa Town, Bahrain. Call +973 17777234. Open 7 days a week, 9 AM – 11 PM. Email info@mazayadc.com.",
   alternates: {
     canonical: "/contact",
   },

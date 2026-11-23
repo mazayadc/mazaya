@@ -121,7 +121,7 @@ export const ar = {
     sendButton: "إرسال الرسالة",
     placeholderName: "علي أحمد",
     placeholderEmail: "ali@example.com",
-    placeholderPhone: "+973 3922 4333",
+    placeholderPhone: "+973 1777 7234",
     placeholderMessage: "كيف يمكننا مساعدتك؟",
   },
   community: {

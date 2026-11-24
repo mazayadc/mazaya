@@ -1,6 +1,5 @@
 export interface Department {
   id: number;
-  slug: string;
   name: string;
   shortName: string;
   description: string;
@@ -12,7 +11,6 @@ export interface Department {
 export const departments: Department[] = [
   {
     id: 1,
-    slug: "orthodontics",
     name: "Orthodontics",
     shortName: "Orthodontics",
     description: "Specialized care for teeth alignment and bite correction using braces and aligners.",
@@ -30,7 +28,6 @@ export const departments: Department[] = [
   },
   {
     id: 2,
-    slug: "pedodontics",
     name: "Pedodontics (Children's Dentistry)",
     shortName: "Pedodontics",
     description: "Comprehensive dental care for children, ensuring healthy smiles from an early age.",
@@ -48,7 +45,6 @@ export const departments: Department[] = [
   },
   {
     id: 3,
-    slug: "implantology",
     name: "Implantology (Dental Implants & Restoration)",
     shortName: "Implantology",
     description: "Advanced tooth replacement solutions with durable and natural-looking dental implants.",
@@ -65,7 +61,6 @@ export const departments: Department[] = [
   },
   {
     id: 4,
-    slug: "prosthodontics",
     name: "Prosthodontics (Replacement of Missing Teeth)",
     shortName: "Prosthodontics",
     description: "Restorative solutions including crowns, bridges, and dentures for complete oral rehabilitation.",
@@ -82,7 +77,6 @@ export const departments: Department[] = [
   },
   {
     id: 5,
-    slug: "periodontics",
     name: "Periodontics (Gum & Bone Health)",
     shortName: "Periodontics",
     description: "Expert care for gum health and treatment of periodontal diseases to maintain strong foundations.",
@@ -99,7 +93,6 @@ export const departments: Department[] = [
   },
   {
     id: 6,
-    slug: "endodontics",
     name: "Endodontics (Root Canal & Tooth Preservation)",
     shortName: "Endodontics",
     description: "Specialized root canal treatments to save damaged teeth and relieve dental pain.",

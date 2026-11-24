@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { departments } from "@/lib/departments";
 import JsonLd from "@/components/JsonLd";
@@ -93,11 +92,7 @@ export default function DepartmentsPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold font-heading text-gray-900">
-                      <Link href={`/departments/${dept.slug}`} className="hover:text-primary transition-colors">
-                        {dept.name}
-                      </Link>
-                    </h3>
+                    <h3 className="text-lg font-bold font-heading text-gray-900">{dept.name}</h3>
                     <p className="text-gray-600 text-xs mt-0.5">{dept.description}</p>
                   </div>
                 </div>

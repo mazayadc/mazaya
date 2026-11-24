@@ -31,19 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    ...[
-      'orthodontics',
-      'pedodontics',
-      'implantology',
-      'prosthodontics',
-      'periodontics',
-      'endodontics',
-    ].map((slug) => ({
-      url: `${baseUrl}/departments/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
     {
       url: `${baseUrl}/blog/`,
       lastModified: currentDate,

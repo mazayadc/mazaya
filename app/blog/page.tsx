@@ -31,8 +31,10 @@ async function getBlogPosts() {
       slug: post.slug,
       date: post.date,
       category: post.category,
+      categoryAr: post.categoryAr,
       tags: post.tags,
       author: post.author,
+      authorAr: post.authorAr,
       readTime: post.readTimeEn,
       readTimeAr: post.readTimeAr,
       excerpt: post.excerpt.en,
@@ -50,7 +52,7 @@ async function getBlogPosts() {
   }));
 
   if (!isContentfulConfigured || !client) {
-    return localPosts;
+    return [...localPosts].sort((a, b) => String(b.fields.date).localeCompare(String(a.fields.date)));
   }
 
   try {
@@ -59,8 +61,12 @@ async function getBlogPosts() {
       order: ['-sys.createdAt'],
     });
     
-    // Combine Contentful posts with local campaign posts
-    return [...response.items, ...localPosts];
+    const combined = [...response.items, ...localPosts];
+    return combined.sort((a, b) => {
+      const dateA = String(a.fields?.date || a.sys?.createdAt || '');
+      const dateB = String(b.fields?.date || b.sys?.createdAt || '');
+      return dateB.localeCompare(dateA);
+    });
   } catch (error) {
     console.error('Error fetching blog posts from Contentful:', error);
     return localPosts;

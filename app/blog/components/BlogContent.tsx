@@ -92,7 +92,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
               const offerBadge = post.fields.campaignInfo 
                 ? (isAr ? post.fields.campaignInfo.offerBadgeAr : post.fields.campaignInfo.offerBadgeEn)
                 : null;
-              const categoryName = post.fields.category || (isAr ? 'مقالات صحية' : 'Dental Health');
+              const categoryName = (isAr && post.fields.categoryAr)
+                ? post.fields.categoryAr
+                : (post.fields.category || (isAr ? 'مقالات صحية' : 'Dental Health'));
 
               return (
                 <motion.div

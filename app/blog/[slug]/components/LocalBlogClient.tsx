@@ -20,6 +20,8 @@ export default function LocalBlogClient({ post }: LocalBlogClientProps) {
   const title = isAr ? post.title.ar : post.title.en;
   const excerpt = isAr ? post.excerpt.ar : post.excerpt.en;
   const readTime = isAr ? post.readTimeAr : post.readTimeEn;
+  const category = isAr && post.categoryAr ? post.categoryAr : post.category;
+  const author = isAr && post.authorAr ? post.authorAr : post.author;
   const campaign = post.campaignInfo;
   const offerBadge = campaign ? (isAr ? campaign.offerBadgeAr : campaign.offerBadgeEn) : null;
   const highlights = campaign ? (isAr ? campaign.highlightsAr : campaign.highlightsEn) : [];
@@ -57,7 +59,7 @@ export default function LocalBlogClient({ post }: LocalBlogClientProps) {
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span className="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-100 to-teal-50 text-emerald-800 border border-emerald-200/60">
                   <BookOpen className="w-3 h-3 me-1.5" />
-                  {post.category}
+                  {category}
                 </span>
                 {offerBadge && (
                   <span className="inline-flex items-center text-xs font-bold px-3 py-1 rounded-md bg-amber-100 text-amber-900 border border-amber-300">
@@ -75,7 +77,7 @@ export default function LocalBlogClient({ post }: LocalBlogClientProps) {
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1.5 font-medium text-gray-900">
                     <User className="w-4 h-4 text-emerald-600" />
-                    <span>{post.author}</span>
+                    <span>{author}</span>
                   </div>
                   <span>•</span>
                   <div className="flex items-center gap-1.5">

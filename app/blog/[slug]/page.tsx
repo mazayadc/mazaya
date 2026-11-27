@@ -54,15 +54,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (post.isLocal) {
     const localPost = post.localData;
     return {
-      title: `${localPost.title.en} | Mazaya Dental Center`,
+      title: {
+        absolute: localPost.seo.seoTitleEn || `${localPost.title.en} | Mazaya Dental Center`,
+      },
       description: localPost.seo.metaDescriptionEn,
       keywords: localPost.seo.keywords,
       alternates: {
         canonical: `/blog/${params.slug}/`,
       },
       openGraph: {
-        title: `${localPost.title.en} | Mazaya Dental Center`,
-        description: localPost.seo.metaDescriptionEn,
+        title: localPost.seo.ogTitleEn || localPost.seo.seoTitleEn || `${localPost.title.en} | Mazaya Dental Center`,
+        description: localPost.seo.ogDescriptionEn || localPost.seo.metaDescriptionEn,
         url: `https://mazayadc.com/blog/${params.slug}/`,
         type: 'article',
         publishedTime: localPost.date,
@@ -70,8 +72,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${localPost.title.en} | Mazaya Dental Center`,
-        description: localPost.seo.metaDescriptionEn,
+        title: localPost.seo.ogTitleEn || localPost.seo.seoTitleEn || `${localPost.title.en} | Mazaya Dental Center`,
+        description: localPost.seo.ogDescriptionEn || localPost.seo.metaDescriptionEn,
       },
     };
   }

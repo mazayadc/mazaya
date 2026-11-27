@@ -2,9 +2,11 @@ export interface LocalBlogPost {
   id: string;
   slug: string;
   category: string;
+  categoryAr?: string;
   tags: string[];
   date: string;
   author: string;
+  authorAr?: string;
   readTimeEn: string;
   readTimeAr: string;
   title: {
@@ -37,6 +39,12 @@ export interface LocalBlogPost {
     keywords: string[];
     metaDescriptionEn: string;
     metaDescriptionAr: string;
+    seoTitleEn?: string;
+    seoTitleAr?: string;
+    ogTitleEn?: string;
+    ogTitleAr?: string;
+    ogDescriptionEn?: string;
+    ogDescriptionAr?: string;
   };
   campaignInfo?: {
     offerBadgeEn: string;
@@ -47,6 +55,260 @@ export interface LocalBlogPost {
 }
 
 export const LOCAL_BLOG_POSTS: LocalBlogPost[] = [
+  {
+    id: 'post-gums-bleed-when-brushing',
+    slug: 'why-gums-bleed-when-brushing-without-pain',
+    category: 'Dental Health',
+    categoryAr: 'صحة الأسنان',
+    tags: ['Bleeding Gums', 'Gingivitis', 'Gum Health', 'Brushing and Flossing'],
+    date: '2026-11-27',
+    author: 'Mazaya Dental Specialists',
+    authorAr: 'أخصائيو مركز مزايا لطب الأسنان',
+    readTimeEn: '5 min read',
+    readTimeAr: '5 دقائق قراءة',
+    title: {
+      en: 'Why Do My Gums Bleed When I Brush Even Though They Don’t Hurt?',
+      ar: 'لماذا تنزف لثتي عند تنظيف أسناني بالفرشاة رغم أنني لا أشعر بألم؟',
+    },
+    excerpt: {
+      en: 'A little blood on your toothbrush can be the first change you notice in your gums. Learn why painless bleeding happens, how to clean the area gently, and when to see a dentist.',
+      ar: 'قد تكون آثار الدم على فرشاة الأسنان أول تغيّر تلاحظه في لثتك. تعرّف على أسباب النزيف من دون ألم، وكيفية تنظيف المنطقة بلطف، ومتى تراجع طبيب الأسنان.',
+    },
+    seo: {
+      keywords: [
+        'bleeding gums when brushing',
+        'gums bleeding without pain',
+        'should I brush bleeding gums',
+        'early signs of gingivitis',
+        'do bleeding gums need deep cleaning',
+        'نزيف اللثة عند تنظيف الأسنان بالفرشاة',
+        'نزيف اللثة بدون ألم',
+        'هل أستمر في تنظيف اللثة إذا نزفت',
+        'علامات التهاب اللثة المبكر',
+        'هل نزيف اللثة يحتاج إلى تنظيف عميق',
+      ],
+      metaDescriptionEn: 'Do your gums bleed when you brush, even without pain? Learn why it happens, how to clean the area gently, and when to book a gum check in Isa Town, Bahrain.',
+      metaDescriptionAr: 'هل تنزف لثتك عند تنظيف أسنانك من دون ألم؟ تعرّف على الأسباب، وكيف تنظّف المنطقة بلطف، ومتى تحجز موعدًا لفحص اللثة في مدينة عيسى، البحرين.',
+      seoTitleEn: 'Why Gums Bleed When Brushing | Mazaya Dental Center',
+      seoTitleAr: 'لماذا تنزف اللثة عند تنظيف الأسنان؟ | مركز مزايا لطب الأسنان',
+      ogTitleEn: 'My Gums Bleed When I Brush. Should I Skip That Spot?',
+      ogTitleAr: 'لثتي تنزف عند استخدام الفرشاة. هل أتجنّب تنظيف هذا الموضع؟',
+      ogDescriptionEn: 'You see pink in the sink, but nothing hurts. Here’s how to clean the area gently and what a dentist can check if the bleeding keeps coming back.',
+      ogDescriptionAr: 'تلاحظ أثرًا ورديًا في المغسلة من دون أن تشعر بألم. إليك كيف تنظّف الموضع بلطف وما الذي يفحصه طبيب الأسنان إذا تكرّر النزيف.',
+    },
+    content: {
+      en: {
+        sections: [
+          {
+            paragraphs: [
+              'A guide to bleeding gums from Mazaya Dental Center in Isa Town, Bahrain.',
+              'You finish brushing and notice a pink streak in the toothpaste. You can eat comfortably, your teeth feel fine, and by the time you look in the mirror, the bleeding has stopped. The next morning, it happens again. Should you brush that spot more carefully, leave it alone, or book a dental appointment?',
+              'If your gums keep bleeding when you brush, keep cleaning them gently and arrange a dental check-up. Gums can become inflamed without feeling sore. Bleeding may be the first change you notice.',
+            ],
+          },
+          {
+            heading: 'Why can gums bleed without hurting?',
+            paragraphs: [
+              'Run your tongue along your teeth near the gumline before brushing. The soft film that sometimes collects there is called plaque. It contains bacteria and can build up along the edges of the gums and between teeth. When the gums become inflamed, even gentle contact with a toothbrush or floss can make them bleed. An early form of this inflammation is called gingivitis.',
+              'You may wonder whether you simply pressed too hard. Use a soft brush and light pressure, but pay attention if the same area bleeds again. That detail is more useful to tell your dentist than the amount of pink you saw in the sink.',
+            ],
+          },
+          {
+            heading: 'Should I keep brushing the spot that bleeds?',
+            paragraphs: [
+              'Yes. It’s understandable to steer around a spot when you see blood, but plaque can continue to collect there. The aim is to clean the edge where the tooth meets the gum without scrubbing it.',
+            ],
+            bulletPoints: [
+              'Brush twice a day with fluoride toothpaste, using a soft toothbrush and gentle strokes along the gumline.',
+              'Clean between your teeth each day. If floss catches or an interdental brush feels too tight, ask your dentist to show you a suitable technique and size.',
+              'If there’s one gap you always miss, point it out at your appointment. You can ask, “Could you show me how to clean between these two teeth?”',
+            ],
+          },
+          {
+            heading: 'What will a dentist check, and will I need a deep cleaning?',
+            paragraphs: [
+              'Tell the dentist whether the bleeding comes from one spot or several, when you first noticed it, and whether it also happens when you floss or eat. The dentist can examine the gumline for inflammation and hardened deposits called tartar. They may use a small measuring instrument to check the spaces between the teeth and gums. If needed, an X-ray can help assess the bone supporting the teeth.',
+              'Bleeding alone doesn’t tell you whether you need a deep cleaning. If inflammation is limited to the gumline, professional cleaning and changes to your daily routine may be enough. If the examination shows deeper pockets and deposits below the gums, your dentist can explain whether cleaning beneath the gumline would help. A useful question to ask is, “Can you show me which areas need treatment and why?”',
+            ],
+          },
+          {
+            heading: 'When should I book an appointment?',
+            paragraphs: [
+              'Book a dental check-up if bleeding keeps returning, even if it stops quickly. Mention any persistent bad breath, swelling, or change in how your gums look. If your gums become very sore and swollen, or an adult tooth starts to feel loose, ask for an urgent dental appointment.',
+              'To arrange a gum assessment at Mazaya Dental Center in Isa Town, Bahrain, call +973 1777 7234. When you call, mention whether the bleeding comes from one area or several and whether you have swelling or a loose tooth.',
+            ],
+          },
+        ],
+      },
+      ar: {
+        sections: [
+          {
+            paragraphs: [
+              'دليل لفهم نزيف اللثة من مركز مزايا لطب الأسنان في مدينة عيسى، البحرين.',
+              'تنتهي من تنظيف أسنانك وتلاحظ أثرًا ورديًا في رغوة المعجون. تأكل كالمعتاد ولا تشعر بأي ألم، وحين تنظر في المرآة يكون النزيف قد توقّف. ثم يتكرّر الأمر في صباح اليوم التالي. هل تنظّف هذا الموضع برفق أكثر، أم تتجنّبه، أم تحجز موعدًا عند طبيب الأسنان؟',
+              'إذا تكرّر نزيف اللثة عند تنظيف أسنانك، فاستمرّ في تنظيفها بلطف واحجز موعدًا لفحصها. قد تلتهب اللثة من دون أن تؤلمك، وقد يكون النزيف أول تغيّر تلاحظه.',
+            ],
+          },
+          {
+            heading: 'كيف تنزف اللثة من دون أن تؤلمني؟',
+            paragraphs: [
+              'مرّر لسانك على أسنانك قرب حافة اللثة قبل تنظيفها. قد تشعر بطبقة رقيقة ولزجة تُسمّى البلاك. تحتوي هذه الطبقة على بكتيريا ويمكن أن تتراكم عند حافة اللثة وفي الفراغات بين الأسنان. وعندما تلتهب اللثة، قد تنزف بمجرّد ملامسة الفرشاة أو الخيط لها برفق. ويُعرف الالتهاب في مرحلته المبكرة بالتهاب اللثة.',
+              'قد تتساءل إن كنت قد ضغطت بقوة على الفرشاة. استخدم فرشاة ناعمة وخفّف الضغط، وانتبه إذا عاد النزيف إلى الموضع نفسه. فعندما تصف ما يحدث لطبيبك، يفيده أن يعرف أين يتكرّر النزيف أكثر من معرفة كمية الدم التي رأيتها في المغسلة.',
+            ],
+          },
+          {
+            heading: 'هل أستمرّ في تنظيف الموضع الذي ينزف؟',
+            paragraphs: [
+              'نعم. من الطبيعي أن تحاول تجنّب الموضع عند رؤية الدم، لكن البلاك قد يستمرّ في التراكم فيه. نظّف الحافة التي تلتقي عندها السن باللثة بحركات لطيفة ومن دون فرك قوي.',
+            ],
+            bulletPoints: [
+              'نظّف أسنانك مرتين يوميًا بمعجون يحتوي على الفلورايد، واستخدم فرشاة ناعمة ومرّرها برفق بمحاذاة اللثة.',
+              'نظّف بين أسنانك يوميًا. إذا كان الخيط يعلق أو كان إدخال الفرشاة المخصّصة لما بين الأسنان صعبًا، فاطلب من طبيبك أن يوضّح لك الطريقة المناسبة ويساعدك في اختيار المقاس.',
+              'إذا كنت تجد صعوبة في الوصول إلى فراغ معيّن، فأشر إليه أثناء الفحص واسأل: «هل يمكنك أن تريني كيف أنظّف بين هاتين السنّين؟»',
+            ],
+          },
+          {
+            heading: 'ماذا يفحص الطبيب؟ وهل أحتاج إلى تنظيف عميق؟',
+            paragraphs: [
+              'أخبر الطبيب إن كان النزيف يأتي من موضع واحد أو من عدة مواضع، ومتى لاحظته أول مرة، وهل يحدث أيضًا عند استخدام الخيط أو أثناء الأكل. يفحص الطبيب حافة اللثة بحثًا عن علامات الالتهاب وتراكم الجير، وهو ترسّبات صلبة تلتصق بالأسنان. وقد يستخدم أداة قياس صغيرة لقياس عمق الفراغ بين السن واللثة. وعند الحاجة، تساعد صورة الأشعة على تقييم العظم الداعم للأسنان.',
+              'لا يكفي النزيف وحده لتحديد حاجتك إلى تنظيف عميق. إذا كان الالتهاب محصورًا عند حافة اللثة، فقد يكفي تنظيف الأسنان في العيادة وتعديل طريقة العناية بها في المنزل. وإذا أظهر الفحص وجود جيوب لثوية أعمق وترسّبات تحت اللثة، يشرح لك الطبيب ما إذا كان تنظيف تلك المواضع مناسبًا لحالتك. ويمكنك أن تسأله: «هل يمكنك أن تريني المواضع التي تحتاج إلى علاج وتشرح لي السبب؟»',
+            ],
+          },
+          {
+            heading: 'متى أحجز موعدًا لفحص اللثة؟',
+            paragraphs: [
+              'احجز موعدًا إذا تكرّر النزيف، حتى لو كان يتوقّف بسرعة. وأخبر الطبيب إذا لاحظت رائحة فم مستمرّة، أو تورّمًا، أو تغيّرًا في شكل اللثة. وإذا أصبحت اللثة شديدة الألم والتورّم، أو شعرت بأن إحدى أسنانك الدائمة بدأت تتحرّك، فاطلب موعدًا عاجلًا لدى طبيب الأسنان.',
+              'لحجز موعد لفحص اللثة في مركز مزايا لطب الأسنان في مدينة عيسى، البحرين، اتصل على الرقم ‎+973 1777 7234‎. واذكر عند الاتصال ما إذا كان النزيف يأتي من موضع واحد أو أكثر، وما إذا كنت تعاني من تورّم أو تخلخل في إحدى الأسنان.',
+            ],
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: 'post-wisdom-tooth-pain-comes-and-goes',
+    slug: 'why-wisdom-tooth-pain-comes-and-goes',
+    category: 'Dental Health',
+    categoryAr: 'صحة الأسنان',
+    tags: ['Wisdom Teeth', 'Wisdom Tooth Pain', 'Pericoronitis', 'Gum Health'],
+    date: '2026-11-27',
+    author: 'Mazaya Dental Specialists',
+    authorAr: 'أخصائيو مركز مزايا لطب الأسنان',
+    readTimeEn: '4 min read',
+    readTimeAr: '4 دقائق قراءة',
+    title: {
+      en: 'Why Does My Wisdom Tooth Hurt for a Few Days, Then Stop?',
+      ar: 'لماذا يؤلمني ضرس العقل لبضعة أيام ثم يزول الألم؟',
+    },
+    excerpt: {
+      en: 'Wisdom tooth pain can ease for days, then return in the same spot. Learn why this happens, what a dentist can check after the pain stops, and when to seek urgent care.',
+      ar: 'قد يخفّ ألم ضرس العقل لأيام ثم يعود في المكان نفسه. تعرّف على سبب تكرار الألم، وما الذي يمكن لطبيب الأسنان فحصه بعد زواله، ومتى تحتاج إلى رعاية عاجلة.',
+    },
+    seo: {
+      keywords: [
+        'wisdom tooth pain that comes and goes',
+        'recurring wisdom tooth pain',
+        'swollen gum behind last molar',
+        'partially erupted wisdom tooth',
+        'should I see a dentist if wisdom tooth pain stops',
+        'ألم ضرس العقل الذي يختفي ثم يعود',
+        'ألم ضرس العقل المتكرر',
+        'تورّم اللثة خلف آخر ضرس',
+        'ظهور ضرس العقل جزئيًا',
+        'هل أراجع طبيب الأسنان إذا اختفى ألم ضرس العقل',
+      ],
+      metaDescriptionEn: 'Wisdom tooth pain can disappear and return weeks later. Learn why it happens, when to see a dentist, and when swelling needs urgent care.',
+      metaDescriptionAr: 'قد يختفي ألم ضرس العقل ثم يعود بعد أسابيع. تعرّف على أسباب تكراره، ومتى تراجع طبيب الأسنان، وما العلامات التي تستدعي رعاية عاجلة.',
+      seoTitleEn: 'Why Wisdom Tooth Pain Comes and Goes | Mazaya Dental Center',
+      seoTitleAr: 'لماذا يختفي ألم ضرس العقل ثم يعود؟ | مركز مزايا لطب الأسنان',
+      ogTitleEn: 'My Wisdom Tooth Stopped Hurting. Should I Keep My Dental Appointment?',
+      ogTitleAr: 'اختفى ألم ضرس العقل. هل أذهب إلى موعد طبيب الأسنان؟',
+      ogDescriptionEn: 'The pain has gone, but it’s the third time the same spot has hurt. Here’s what a dentist can check between flare-ups and which symptoms need urgent care.',
+      ogDescriptionAr: 'زال الألم، لكنها المرة الثالثة التي يؤلمك فيها الموضع نفسه. تعرّف على ما يفحصه طبيب الأسنان بين نوبات الألم، والأعراض التي تستدعي رعاية عاجلة.',
+    },
+    content: {
+      en: {
+        sections: [
+          {
+            paragraphs: [
+              'An oral health guide from Mazaya Dental Center in Isa Town, Bahrain.',
+              'The gum behind your last tooth feels sore every time you chew. A few days later, you can eat comfortably again. Then, weeks later, the pain returns in exactly the same spot. Why does this happen, and is it worth seeing a dentist once the pain has gone?',
+              'If the pain keeps coming back, book a dental assessment. One possible cause is inflammation around a wisdom tooth that has only partly come through the gum. The tenderness can settle between episodes, even while the area remains difficult to clean.',
+            ],
+          },
+          {
+            heading: 'Why does wisdom tooth pain come and go?',
+            paragraphs: [
+              'Imagine trying to brush a back tooth when a small flap of gum still covers one corner. The bristles reach the exposed part of the tooth, but food and plaque can collect beneath the flap. When the gum around a partly erupted tooth becomes inflamed, dentists call it pericoronitis. You may notice tenderness behind your last molar, swelling, or an unpleasant taste.',
+              'As the inflammation settles, chewing can feel comfortable again. If the flap remains, debris can collect in the same place and the soreness can return. There are other possible explanations, too. A cavity in the wisdom tooth or the molar in front of it can cause pain in the same area.',
+            ],
+          },
+          {
+            heading: 'Should I keep my appointment if the pain has stopped?',
+            paragraphs: [
+              'Yes. Even on a pain-free day, a dentist can examine the gum, check how much of the wisdom tooth has come through, and look at the neighbouring molar. If an X-ray would help explain the symptoms, it can show how the wisdom tooth sits beneath the gum.',
+              'It helps to describe the episode in your own words. For example, “This is the third time the gum behind my lower left molar has swollen. Last time, it hurt to open my mouth.” Tell the dentist how long each episode lasted and whether you noticed swelling, a bad taste, or difficulty opening your mouth.',
+            ],
+          },
+          {
+            heading: 'Will my wisdom tooth need to be removed?',
+            paragraphs: [
+              'That depends on what the dentist finds. After a first mild episode, cleaning around the tooth and learning how to reach the area at home may be enough. If the same tooth causes repeated flare-ups, or if the neighbouring molar shows signs of damage, your dentist may discuss removal.',
+              'A useful question to ask is, “If we monitor this tooth, what changes should bring me back?” That gives you a plan for what to do if the soreness returns.',
+            ],
+          },
+          {
+            heading: 'What should I do during a flare-up?',
+            paragraphs: [
+              'For mild soreness, gently clean around the tooth with a small, soft toothbrush. A warm salt-water rinse may help ease discomfort while you arrange a dental visit.',
+              'Seek urgent dental care if the swelling is increasing, you develop a fever, or it becomes difficult to open your mouth. If swelling makes it difficult to breathe or swallow, seek emergency medical care immediately.',
+              'If pain keeps returning behind your last molar, you can arrange an assessment at Mazaya Dental Center in Isa Town, Bahrain. Call +973 1777 7234 and tell the team which side hurts and whether you have any swelling today.',
+            ],
+          },
+        ],
+      },
+      ar: {
+        sections: [
+          {
+            paragraphs: [
+              'دليل لصحة الفم من مركز مزايا لطب الأسنان في مدينة عيسى، البحرين.',
+              'تؤلمك اللثة خلف آخر ضرس كلما مضغت الطعام. وبعد بضعة أيام، تعود إلى الأكل براحة. ثم تمرّ أسابيع ويعود الألم في الموضع نفسه تمامًا. لماذا يحدث ذلك؟ وهل ما زالت زيارة طبيب الأسنان مفيدة بعد زوال الألم؟',
+              'إذا تكرّر الألم، فاحجز موعدًا لفحص المنطقة. أحد الأسباب المحتملة هو التهاب اللثة المحيطة بضرس عقل لم يظهر منه سوى جزء صغير. قد يهدأ الألم بين نوبة وأخرى، حتى لو ظلّ تنظيف المنطقة صعبًا.',
+            ],
+          },
+          {
+            heading: 'لماذا يختفي ألم ضرس العقل ثم يعود؟',
+            paragraphs: [
+              'تخيّل أنك تحاول تنظيف ضرس خلفي بالفرشاة، بينما لا يزال جزء صغير من اللثة يغطّي أحد أطرافه. تصل شعيرات الفرشاة إلى الجزء الظاهر من الضرس، لكن بقايا الطعام وطبقة البلاك قد تتجمّع تحت اللثة التي تغطّيه. وعندما تلتهب اللثة المحيطة بضرس ظهر جزئيًا، يسمّي أطباء الأسنان هذه الحالة «التهاب ما حول تاج الضرس». قد تشعر بألم عند لمس اللثة خلف آخر ضرس، أو تلاحظ تورّمًا أو طعمًا غير مستحب في الفم.',
+              'عندما يهدأ الالتهاب، قد تتمكّن من المضغ براحة من جديد. وإذا بقي جزء من اللثة يغطّي الضرس، فقد تتجمّع بقايا الطعام في المكان نفسه ويعود الألم. وهناك أسباب محتملة أخرى، منها وجود تسوّس في ضرس العقل أو في الضرس الذي أمامه مباشرة، إذ قد تشعر بالألم في المنطقة نفسها.',
+            ],
+          },
+          {
+            heading: 'هل أذهب إلى موعد طبيب الأسنان حتى لو زال الألم؟',
+            paragraphs: [
+              'نعم. حتى في يوم لا تشعر فيه بالألم، يستطيع الطبيب فحص اللثة، ومعرفة مقدار ما ظهر من ضرس العقل، وفحص الضرس المجاور. وإذا احتاج إلى صورة أشعة لتفسير الأعراض، فقد تساعده على معرفة وضع ضرس العقل تحت اللثة.',
+              'من المفيد أن تصف ما حدث بكلماتك. يمكنك أن تقول مثلًا: «هذه ثالث مرة تتورّم فيها اللثة خلف آخر ضرس في الجهة اليسرى من الفك السفلي. وفي المرة الماضية، كنت أشعر بالألم عندما أفتح فمي». أخبر الطبيب بالمدة التي استمرّت فيها كل نوبة، وما إذا لاحظت تورّمًا أو طعمًا غير مستحب أو صعوبة في فتح الفم.',
+            ],
+          },
+          {
+            heading: 'هل سأحتاج إلى خلع ضرس العقل؟',
+            paragraphs: [
+              'يعتمد ذلك على ما يتبيّن للطبيب أثناء الفحص. إذا كانت هذه أول نوبة وكانت خفيفة، فقد يكفي أن ينظّف الطبيب المنطقة المحيطة بالضرس ويوضّح لك كيف تصل إليها بالفرشاة في المنزل. وإذا تكرّر الالتهاب حول الضرس نفسه، أو ظهرت علامات تضرّر الضرس المجاور، فقد يناقش معك خيار الخلع.',
+              'يمكنك أن تسأل طبيبك: «إذا قرّرنا الاكتفاء بمتابعة الضرس، فما التغيّرات التي تستدعي أن أعود للفحص؟» هكذا تعرف كيف تتصرّف إذا عاد الألم.',
+            ],
+          },
+          {
+            heading: 'ماذا أفعل عندما يعود الألم؟',
+            paragraphs: [
+              'إذا كان الألم خفيفًا، فنظّف المنطقة المحيطة بالضرس برفق باستخدام فرشاة أسنان صغيرة وناعمة. وقد تساعد المضمضة بالماء الدافئ والملح على تخفيف الانزعاج إلى حين مراجعة طبيب الأسنان.',
+              'اطلب رعاية عاجلة لدى طبيب الأسنان إذا ازداد التورّم، أو ظهرت حمّى، أو أصبح فتح الفم صعبًا. إذا سبّب التورّم صعوبة في التنفّس أو البلع، فتوجّه إلى قسم الطوارئ فورًا.',
+              'إذا تكرّر الألم خلف آخر ضرس، يمكنك حجز موعد للفحص في مركز مزايا لطب الأسنان في مدينة عيسى، البحرين. اتصل على الرقم ‎+973 1777 7234‎ وأخبر الفريق بالجهة التي تشعر فيها بالألم، وما إذا كان لديك تورّم اليوم.',
+            ],
+          },
+        ],
+      },
+    },
+  },
   {
     id: 'post-teachers-students-discount',
     slug: 'teachers-university-students-dental-discount-bahrain',
